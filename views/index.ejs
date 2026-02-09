@@ -134,8 +134,10 @@
 
       <section id="mapa-ofertas" class="max-w-6xl mx-auto px-6 py-16">
         <div class="text-center space-y-4 mb-12">
-          <h2 class="text-3xl sm:text-4xl font-semibold">Mapa de ofertas y precios</h2>
-          <p class="text-white/70">Paquetes claros para vender valor, estandarizar entregables y acelerar cierres.</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold">Estimador accesible para pymes</h2>
+          <p class="text-white/70">
+            Empieza con un servicio pequeño, escala por etapas y añade automatización o IA solo si lo necesitas.
+          </p>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8">
           <div class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
@@ -284,6 +286,22 @@
                   </label>
                 </div>
               </div>
+              <div class="mt-4 space-y-3">
+                <div>
+                  <p class="text-xs text-white/50">Qué incluye</p>
+                  <ul id="briefIncludes" class="mt-2 list-disc list-inside space-y-1 text-white/70"></ul>
+                </div>
+                <div>
+                  <p class="text-xs text-white/50">Qué problemas resuelve</p>
+                  <ul id="briefProblems" class="mt-2 list-disc list-inside space-y-1 text-white/70"></ul>
+                </div>
+              </div>
+              <p class="mt-4 text-xs text-white/60">Precio final tras diagnóstico gratuito.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/60">
+              "Para tu situación, la inversión suele situarse entre 900€ y 1.600€.
+              Incluye web profesional, optimización móvil y sistema de contacto automatizado.
+              Tiempo estimado: 2 a 3 semanas."
             </div>
           </div>
         </div>
@@ -607,8 +625,6 @@
       };
 
       const uniqueList = (items) => [...new Set(items)];
-      const formatRange = (minValue, maxValue, suffix = "") =>
-        `${minValue}${suffix} – ${maxValue}${suffix}`;
 
       const updateBriefResult = () => {
         if (
@@ -699,9 +715,15 @@
         impactMin = Math.round(impactMin);
         impactMax = Math.min(Math.round(impactMax), 80);
 
-        const investmentText = `${formatCurrency(investmentMin)} y ${formatCurrency(investmentMax)}`;
-        const timelineText = formatRange(weeksMin, weeksMax, " semanas");
-        const impactText = formatRange(impactMin, impactMax, "%");
+        if (innovationSelected) {
+          const innovationData = estimatorModel.innovation;
+          minInvestment += innovationData.range[0];
+          maxInvestment += innovationData.range[1];
+          minWeeks += innovationData.weeks[0];
+          maxWeeks += innovationData.weeks[1];
+          includes = includes.concat(innovationData.includes);
+          problems = problems.concat(["Necesitas innovación avanzada"]);
+        }
 
         briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
         briefInvestment.textContent = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
@@ -732,6 +754,12 @@
       [...situationInputs, ...investmentInputs, ...objectiveInputs].forEach((input) => {
         input.addEventListener("change", updateBriefResult);
       });
+      if (soloWebInput) {
+        soloWebInput.addEventListener("change", updateBriefResult);
+      }
+      if (innovationToggle) {
+        innovationToggle.addEventListener("change", updateBriefResult);
+      }
       updateBriefResult();
     </script>
   </body>
