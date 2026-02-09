@@ -132,6 +132,96 @@
         </div>
       </section>
 
+      <section id="mapa-ofertas" class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center space-y-4 mb-12">
+          <h2 class="text-3xl sm:text-4xl font-semibold">Mapa de ofertas y precios</h2>
+          <p class="text-white/70">Paquetes claros para vender valor, estandarizar entregables y acelerar cierres.</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8">
+          <div class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left text-white/70">
+                <thead class="bg-slate-900/60 text-xs uppercase tracking-[0.2em] text-white/80">
+                  <tr>
+                    <th class="px-4 py-4">Nivel</th>
+                    <th class="px-4 py-4">Web básica</th>
+                    <th class="px-4 py-4">Web + Reservas</th>
+                    <th class="px-4 py-4">Automatizaciones</th>
+                    <th class="px-4 py-4">IA</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-white/10">
+                  <tr>
+                    <td class="px-4 py-4 text-white/80">Precio mínimo</td>
+                    <td class="px-4 py-4">€1.200</td>
+                    <td class="px-4 py-4">€2.400</td>
+                    <td class="px-4 py-4">€3.500</td>
+                    <td class="px-4 py-4">€4.800</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-4 text-white/80">Precio medio</td>
+                    <td class="px-4 py-4">€2.000</td>
+                    <td class="px-4 py-4">€3.800</td>
+                    <td class="px-4 py-4">€5.500</td>
+                    <td class="px-4 py-4">€7.200</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-4 text-white/80">Precio alto</td>
+                    <td class="px-4 py-4">€3.200</td>
+                    <td class="px-4 py-4">€5.400</td>
+                    <td class="px-4 py-4">€8.000</td>
+                    <td class="px-4 py-4">€10.500</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
+            <p class="text-sm uppercase tracking-[0.3em] text-amarilloCorp">Estimador de presupuesto</p>
+            <p class="mt-3 text-sm text-white/70">
+              Ajusta el nivel de inversión y los módulos que necesitas para obtener un estimado aproximado.
+            </p>
+            <div class="mt-6 space-y-5">
+              <div>
+                <label for="budgetTier" class="text-xs text-white/60">Nivel de precio</label>
+                <select
+                  id="budgetTier"
+                  class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80 focus:border-amarilloCorp focus:outline-none"
+                >
+                  <option value="min">Precio mínimo</option>
+                  <option value="mid" selected>Precio medio</option>
+                  <option value="max">Precio alto</option>
+                </select>
+              </div>
+              <div class="space-y-3 text-sm text-white/70">
+                <p class="text-xs text-white/60">Selecciona los paquetes</p>
+                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  <input type="checkbox" class="budget-option accent-amarilloCorp" data-index="0" checked />
+                  Web básica
+                </label>
+                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  <input type="checkbox" class="budget-option accent-amarilloCorp" data-index="1" />
+                  Web + Reservas
+                </label>
+                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  <input type="checkbox" class="budget-option accent-amarilloCorp" data-index="2" />
+                  Automatizaciones
+                </label>
+                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                  <input type="checkbox" class="budget-option accent-amarilloCorp" data-index="3" />
+                  IA
+                </label>
+              </div>
+              <div class="rounded-2xl border border-amarilloCorp/40 bg-white/5 p-4 text-sm">
+                <p class="text-xs text-white/60">Presupuesto estimado</p>
+                <p id="budgetTotal" class="text-2xl font-semibold text-amarilloCorp">€0</p>
+                <p class="mt-2 text-xs text-white/50">Los valores son orientativos y pueden variar según alcance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="proceso" class="max-w-6xl mx-auto px-6 py-16">
         <div class="text-center space-y-4 mb-12">
           <h2 class="text-3xl sm:text-4xl font-semibold">Proceso claro y controlado</h2>
@@ -286,6 +376,9 @@
       const monthlySavings = document.getElementById("monthlySavings");
       const annualSavings = document.getElementById("annualSavings");
       const roiTotal = document.getElementById("roiTotal");
+      const budgetTier = document.getElementById("budgetTier");
+      const budgetOptions = document.querySelectorAll(".budget-option");
+      const budgetTotal = document.getElementById("budgetTotal");
 
       const formatCurrency = (value) =>
         new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
@@ -308,6 +401,34 @@
       hoursRange.addEventListener("input", updateROI);
       rateRange.addEventListener("input", updateROI);
       updateROI();
+
+      const budgetMatrix = {
+        min: [1200, 2400, 3500, 4800],
+        mid: [2000, 3800, 5500, 7200],
+        max: [3200, 5400, 8000, 10500]
+      };
+
+      const updateBudget = () => {
+        if (!budgetTier || !budgetTotal) return;
+        const tier = budgetTier.value;
+        const prices = budgetMatrix[tier] || [];
+        let total = 0;
+
+        budgetOptions.forEach((option) => {
+          const index = Number(option.dataset.index);
+          if (option.checked && Number.isFinite(prices[index])) {
+            total += prices[index];
+          }
+        });
+
+        budgetTotal.textContent = formatCurrency(total);
+      };
+
+      budgetTier.addEventListener("change", updateBudget);
+      budgetOptions.forEach((option) => {
+        option.addEventListener("change", updateBudget);
+      });
+      updateBudget();
     </script>
   </body>
 </html>
