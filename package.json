@@ -1,0 +1,13 @@
+{
+  "name": "dominguez-solutions",
+  "version": "1.0.0",
+  "description": "Landing page profesional para Dominguez Solutions con Express y EJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

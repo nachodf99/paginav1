@@ -1,0 +1,29 @@
+<header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-lg border-b border-white/10">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-brandYellow text-slate-900 flex items-center justify-center font-bold">DS</div>
+      <span class="font-semibold tracking-wide">Dominguez Solutions</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/80">
+      <a class="hover:text-brandYellow transition duration-300 hover:scale-105" href="#inicio">Inicio</a>
+      <a class="hover:text-brandYellow transition duration-300 hover:scale-105" href="#servicios">Servicios</a>
+      <a class="hover:text-brandYellow transition duration-300 hover:scale-105" href="#proceso">Proceso</a>
+      <a class="hover:text-brandYellow transition duration-300 hover:scale-105" href="#contacto">Contacto</a>
+    </div>
+    <a href="#contacto" class="hidden md:inline-flex items-center justify-center px-4 py-2 rounded-full bg-brandYellow text-slate-900 font-semibold shadow-soft transition duration-300 hover:scale-105">Solicitar Consultoría</a>
+    <button id="navToggle" class="md:hidden text-white/80" aria-label="Abrir menú">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+  </nav>
+  <div id="mobileMenu" class="hidden md:hidden px-6 pb-6">
+    <div class="glass rounded-2xl p-4 space-y-3 text-sm text-white/80">
+      <a class="block hover:text-brandYellow transition duration-300" href="#inicio">Inicio</a>
+      <a class="block hover:text-brandYellow transition duration-300" href="#servicios">Servicios</a>
+      <a class="block hover:text-brandYellow transition duration-300" href="#proceso">Proceso</a>
+      <a class="block hover:text-brandYellow transition duration-300" href="#contacto">Contacto</a>
+      <a href="#contacto" class="inline-flex items-center justify-center w-full px-4 py-2 rounded-full bg-brandYellow text-slate-900 font-semibold shadow-soft transition duration-300 hover:scale-105">Solicitar Consultoría</a>
+    </div>
+  </div>
+</header>
