@@ -303,7 +303,12 @@
               </div>
               <div class="mt-4 space-y-3">
                 <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
-                  <p class="text-xs uppercase tracking-[0.2em] text-amarilloCorp">Resultado estimado</p>
+                  <div class="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-amarilloCorp">
+                    <span>Resultado estimado</span>
+                    <span class="rounded-full border border-amarilloCorp/40 px-2 py-1 text-[10px] font-semibold">Rango estimado</span>
+                    <span class="rounded-full border border-amarilloCorp/40 px-2 py-1 text-[10px] font-semibold">Tiempo</span>
+                    <span class="rounded-full border border-amarilloCorp/40 px-2 py-1 text-[10px] font-semibold">Qué incluye</span>
+                  </div>
                   <p id="briefSummary" class="mt-2 text-sm text-white/70">
                     Selecciona tu situación, objetivos y nivel de inversión para mostrar el estimado.
                   </p>
@@ -316,6 +321,14 @@
                       <p class="text-xs text-white/50">Tiempo de entrega aproximado</p>
                       <p id="briefTimeline" class="font-semibold text-white">-</p>
                     </div>
+                    <div>
+                      <p class="text-xs text-white/50">Impacto esperado</p>
+                      <p id="briefImpact" class="font-semibold text-white">-</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-white/50">Áreas priorizadas</p>
+                      <p id="briefAreas" class="font-semibold text-white">-</p>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -323,8 +336,34 @@
                   <ul id="briefIncludes" class="mt-2 list-disc list-inside space-y-1 text-white/70"></ul>
                 </div>
                 <div>
+                  <p class="text-xs text-white/50">Herramientas sugeridas</p>
+                  <ul id="briefTools" class="mt-2 list-disc list-inside space-y-1 text-white/70"></ul>
+                </div>
+                <div>
                   <p class="text-xs text-white/50">Qué problemas resuelve</p>
                   <ul id="briefProblems" class="mt-2 list-disc list-inside space-y-1 text-white/70"></ul>
+                </div>
+                <div class="grid gap-3 text-xs text-white/70 sm:grid-cols-2">
+                  <div id="panelInvestment" class="rounded-2xl border border-white/10 bg-slate-900/60 p-3">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-amarilloCorp">Rango estimado</p>
+                    <p class="mt-1 text-sm font-semibold text-white">-</p>
+                  </div>
+                  <div id="panelTimeline" class="rounded-2xl border border-white/10 bg-slate-900/60 p-3">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-amarilloCorp">Tiempo</p>
+                    <p class="mt-1 text-sm font-semibold text-white">-</p>
+                  </div>
+                  <div id="panelImpact" class="rounded-2xl border border-white/10 bg-slate-900/60 p-3">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-amarilloCorp">Impacto</p>
+                    <p class="mt-1 text-sm font-semibold text-white">-</p>
+                  </div>
+                  <div id="panelAreas" class="rounded-2xl border border-white/10 bg-slate-900/60 p-3">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-amarilloCorp">Áreas</p>
+                    <p class="mt-1 text-sm font-semibold text-white">-</p>
+                  </div>
+                  <div id="panelTools" class="rounded-2xl border border-white/10 bg-slate-900/60 p-3 sm:col-span-2">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-amarilloCorp">Qué incluye</p>
+                    <p class="mt-1 text-sm font-semibold text-white">-</p>
+                  </div>
                 </div>
               </div>
               <p class="mt-4 text-xs text-white/60">Precio final tras diagnóstico gratuito.</p>
@@ -519,16 +558,24 @@
       const briefSummary = document.getElementById("briefSummary");
       const briefInvestment = document.getElementById("briefInvestment");
       const briefTimeline = document.getElementById("briefTimeline");
+      const briefImpact = document.getElementById("briefImpact");
+      const briefAreas = document.getElementById("briefAreas");
+      const briefTools = document.getElementById("briefTools");
       const briefIncludes = document.getElementById("briefIncludes");
       const briefProblems = document.getElementById("briefProblems");
       const briefExample = document.getElementById("briefExample");
+      const panelInvestment = document.getElementById("panelInvestment");
+      const panelTimeline = document.getElementById("panelTimeline");
+      const panelImpact = document.getElementById("panelImpact");
+      const panelAreas = document.getElementById("panelAreas");
+      const panelTools = document.getElementById("panelTools");
       const situationInputs = document.querySelectorAll('input[name="currentSituation"]');
       const investmentInputs = document.querySelectorAll('input[name="investmentLevel"]');
       const objectiveInputs = document.querySelectorAll(".objective-input");
       const innovationToggle = document.getElementById("innovationToggle");
       const soloWebInput = document.getElementById("soloWebInput");
 
-      const briefModel = {
+      const estimatorModel = {
         soloWeb: {
           label: "Solo web",
           includes: ["Web corporativa", "Diseño responsive", "SEO básico", "Formulario de contacto"]
@@ -657,7 +704,22 @@
       const uniqueList = (items) => [...new Set(items)];
 
       const updateBriefResult = () => {
-        if (!briefSummary || !briefInvestment || !briefTimeline || !briefIncludes || !briefProblems || !briefExample)
+        if (
+          !briefSummary ||
+          !briefInvestment ||
+          !briefTimeline ||
+          !briefImpact ||
+          !briefAreas ||
+          !briefTools ||
+          !briefIncludes ||
+          !briefProblems ||
+          !briefExample ||
+          !panelInvestment ||
+          !panelTimeline ||
+          !panelImpact ||
+          !panelAreas ||
+          !panelTools
+        )
           return;
 
         const situationValue = document.querySelector('input[name="currentSituation"]:checked')?.value;
@@ -680,22 +742,33 @@
             "Selecciona tu situación actual y nivel de inversión para calcular un estimado consultivo.";
           briefInvestment.textContent = "-";
           briefTimeline.textContent = "-";
+          briefImpact.textContent = "-";
+          briefAreas.textContent = "-";
+          briefTools.innerHTML = "";
           briefIncludes.innerHTML = "";
           briefProblems.innerHTML = "";
+          panelInvestment.querySelector("p:last-child").textContent = "-";
+          panelTimeline.querySelector("p:last-child").textContent = "-";
+          panelImpact.querySelector("p:last-child").textContent = "-";
+          panelAreas.querySelector("p:last-child").textContent = "-";
+          panelTools.querySelector("p:last-child").textContent = "-";
           briefExample.textContent =
             '"Para tu situación, la inversión suele situarse entre 900€ y 1.600€. Incluye web profesional, optimización móvil y formulario de contacto. Tiempo estimado: 2 a 3 semanas."';
           return;
         }
 
-        const situationData = briefModel.situations[situationValue] || briefModel.situations["no-web"];
-        const investmentData = briefModel.investmentLevels[investmentValue] || briefModel.investmentLevels["presencia-digital"];
+        const situationData = estimatorModel.situations[situationValue] || estimatorModel.situations["no-web"];
+        const investmentData =
+          estimatorModel.investmentLevels[investmentValue] || estimatorModel.investmentLevels["presencia-digital"];
         const isSoloWeb = Boolean(soloWebInput?.checked && investmentValue === "presencia-digital");
 
         let [investmentMin, investmentMax] = investmentData.baseInvestment;
         let [weeksMin, weeksMax] = investmentData.baseWeeks;
         let [impactMin, impactMax] = investmentData.baseImpact;
-        let includes = isSoloWeb ? [...briefModel.soloWeb.includes] : [...investmentData.includes];
+        let includes = isSoloWeb ? [...estimatorModel.soloWeb.includes] : [...investmentData.includes];
         let problems = [];
+        let areas = [...situationData.areas];
+        let tools = [...situationData.tools];
 
         investmentMin += situationData.investmentBoost[0];
         investmentMax += situationData.investmentBoost[1];
@@ -705,7 +778,7 @@
         impactMax += situationData.impactBoost[1];
 
         selectedObjectives.forEach((objective) => {
-          const objectiveData = briefModel.objectives[objective];
+          const objectiveData = estimatorModel.objectives[objective];
           if (!objectiveData) return;
           investmentMin += objectiveData.investmentBoost[0];
           investmentMax += objectiveData.investmentBoost[1];
@@ -740,14 +813,16 @@
         impactMax = Math.min(Math.round(impactMax), 80);
 
         if (innovationSelected) {
-          const innovationData = briefModel.innovationAddon;
+          const innovationData = estimatorModel.innovationAddon;
           investmentMin += innovationData.range[0];
           investmentMax += innovationData.range[1];
           weeksMin += innovationData.weeks[0];
           weeksMax += innovationData.weeks[1];
           impactMin += innovationData.impact[0];
           impactMax += innovationData.impact[1];
+          areas = areas.concat(innovationData.areas);
           includes = includes.concat(innovationData.tools);
+          tools = tools.concat(innovationData.tools);
         }
 
         const investmentText = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
@@ -755,13 +830,23 @@
         briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}${soloWebNote}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
         briefInvestment.textContent = investmentText;
         briefTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
+        briefImpact.textContent = `${impactMin}–${impactMax}%`;
+        briefAreas.textContent = uniqueList(areas).slice(0, 3).join(", ") || "-";
 
         const includesItems = uniqueList(includes).slice(0, 6);
+        const toolsItems = uniqueList(tools).slice(0, 6);
         const problemsItems = uniqueList(problems).slice(0, 6);
         briefIncludes.innerHTML = includesItems.map((item) => `<li>${item}</li>`).join("");
+        briefTools.innerHTML = toolsItems.map((item) => `<li>${item}</li>`).join("");
         briefProblems.innerHTML = problemsItems.length
           ? problemsItems.map((item) => `<li>${item}</li>`).join("")
           : "<li>Sin objetivos seleccionados aún.</li>";
+
+        panelInvestment.querySelector("p:last-child").textContent = investmentText;
+        panelTimeline.querySelector("p:last-child").textContent = `${weeksMin}–${weeksMax} semanas`;
+        panelImpact.querySelector("p:last-child").textContent = `${impactMin}–${impactMax}%`;
+        panelAreas.querySelector("p:last-child").textContent = uniqueList(areas).slice(0, 3).join(", ") || "-";
+        panelTools.querySelector("p:last-child").textContent = includesItems.slice(0, 3).join(", ") || "-";
 
         briefExample.textContent = `"Para tu situación, la inversión suele situarse entre ${investmentText}. Incluye ${includesItems
           .slice(0, 3)
