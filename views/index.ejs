@@ -293,6 +293,22 @@
                 </div>
               </div>
               <div class="mt-4 space-y-3">
+                <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
+                  <p class="text-xs uppercase tracking-[0.2em] text-amarilloCorp">Resultado estimado</p>
+                  <p id="briefSummary" class="mt-2 text-sm text-white/70">
+                    Selecciona tu situación, objetivos y nivel de inversión para mostrar el estimado.
+                  </p>
+                  <div class="mt-3 grid gap-2 text-sm text-white/70 sm:grid-cols-2">
+                    <div>
+                      <p class="text-xs text-white/50">Rango estimado</p>
+                      <p id="briefInvestment" class="font-semibold text-white">-</p>
+                    </div>
+                    <div>
+                      <p class="text-xs text-white/50">Tiempo de entrega aproximado</p>
+                      <p id="briefTimeline" class="font-semibold text-white">-</p>
+                    </div>
+                  </div>
+                </div>
                 <div>
                   <p class="text-xs text-white/50">Qué incluye</p>
                   <ul id="briefIncludes" class="mt-2 list-disc list-inside space-y-1 text-white/70"></ul>
@@ -305,9 +321,11 @@
               <p class="mt-4 text-xs text-white/60">Precio final tras diagnóstico gratuito.</p>
             </div>
             <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/60">
-              "Para tu situación, la inversión suele situarse entre 900€ y 1.600€.
-              Incluye web profesional, optimización móvil y sistema de contacto automatizado.
-              Tiempo estimado: 2 a 3 semanas."
+              <p id="briefExample">
+                "Para tu situación, la inversión suele situarse entre 900€ y 1.600€.
+                Incluye web profesional, optimización móvil y sistema de contacto automatizado.
+                Tiempo estimado: 2 a 3 semanas."
+              </p>
             </div>
           </div>
         </div>
@@ -492,14 +510,9 @@
       const briefSummary = document.getElementById("briefSummary");
       const briefInvestment = document.getElementById("briefInvestment");
       const briefTimeline = document.getElementById("briefTimeline");
-      const briefImpact = document.getElementById("briefImpact");
-      const briefAreas = document.getElementById("briefAreas");
-      const briefTools = document.getElementById("briefTools");
-      const panelInvestment = document.getElementById("panelInvestment");
-      const panelTimeline = document.getElementById("panelTimeline");
-      const panelImpact = document.getElementById("panelImpact");
-      const panelAreas = document.getElementById("panelAreas");
-      const panelTools = document.getElementById("panelTools");
+      const briefIncludes = document.getElementById("briefIncludes");
+      const briefProblems = document.getElementById("briefProblems");
+      const briefExample = document.getElementById("briefExample");
       const situationInputs = document.querySelectorAll('input[name="currentSituation"]');
       const investmentInputs = document.querySelectorAll('input[name="investmentLevel"]');
       const objectiveInputs = document.querySelectorAll(".objective-input");
@@ -545,10 +558,9 @@
           "presencia-digital": {
             label: "Presencia digital",
             baseInvestment: [700, 1200],
-            baseWeeks: [2, 4],
+            baseWeeks: [2, 3],
             baseImpact: [8, 16],
-            areas: ["Web corporativa", "Identidad visual"],
-            tools: ["Diseño web", "SEO básico"],
+            includes: ["Web profesional", "Optimización móvil", "Formulario de contacto"],
             iaIncluded: false
           },
           crecimiento: {
@@ -556,8 +568,7 @@
             baseInvestment: [1200, 2500],
             baseWeeks: [3, 5],
             baseImpact: [12, 22],
-            areas: ["Captación de clientes", "Contenido estratégico"],
-            tools: ["Landing optimizadas", "Analítica web"],
+            includes: ["Web profesional", "Optimización móvil", "Contenido estratégico", "CTA de conversión"],
             iaIncluded: false
           },
           optimizacion: {
@@ -565,8 +576,7 @@
             baseInvestment: [2000, 4000],
             baseWeeks: [4, 7],
             baseImpact: [18, 30],
-            areas: ["Conversión y automatización", "Procesos digitales"],
-            tools: ["Automatizaciones web", "Integraciones"],
+            includes: ["Web profesional avanzada", "Optimización móvil", "Contacto automatizado", "Integraciones clave"],
             iaIncluded: false
           }
         },
@@ -583,50 +593,50 @@
             investmentBoost: [150, 300],
             weeksBoost: [0.3, 0.6],
             impactBoost: [2, 4],
-            areas: ["Captación comercial"],
-            tools: ["SEO local"]
+            includes: ["SEO local", "Landing de captación"],
+            problems: ["Baja captación de clientes"]
           },
           "mostrar-negocio": {
             investmentBoost: [120, 250],
             weeksBoost: [0.2, 0.5],
             impactBoost: [1, 3],
-            areas: ["Branding y contenido"],
-            tools: ["Galerías y casos"]
+            includes: ["Galería profesional", "Contenido visual"],
+            problems: ["Poca visibilidad del negocio"]
           },
           "reservas-citas": {
             investmentBoost: [200, 400],
             weeksBoost: [0.4, 0.8],
             impactBoost: [3, 6],
-            areas: ["Reservas y agenda"],
-            tools: ["Motor de reservas"]
+            includes: ["Sistema de reservas", "Agenda automatizada"],
+            problems: ["Gestión manual de reservas"]
           },
           "vender-productos": {
             investmentBoost: [250, 500],
             weeksBoost: [0.6, 1],
             impactBoost: [4, 7],
-            areas: ["Ecommerce"],
-            tools: ["Catálogo online"]
+            includes: ["Catálogo online", "Pasarela de pago"],
+            problems: ["Ventas digitales limitadas"]
           },
           "reducir-llamadas": {
             investmentBoost: [180, 320],
             weeksBoost: [0.3, 0.6],
             impactBoost: [3, 5],
-            areas: ["Atención digital"],
-            tools: ["WhatsApp Business"]
+            includes: ["Contacto automatizado", "WhatsApp Business"],
+            problems: ["Exceso de llamadas repetitivas"]
           },
           "automatizar-repetitivas": {
             investmentBoost: [280, 520],
             weeksBoost: [0.6, 1.2],
             impactBoost: [5, 9],
-            areas: ["Automatización de tareas"],
-            tools: ["Workflows"]
+            includes: ["Automatización de tareas", "Workflows internos"],
+            problems: ["Tareas repetitivas que consumen tiempo"]
           },
           "ia-futuro": {
             investmentBoost: [300, 600],
             weeksBoost: [0.6, 1.2],
             impactBoost: [4, 8],
-            areas: ["Capacidades con IA"],
-            tools: ["Asistente IA"]
+            includes: ["Preparación para IA", "Asistente IA"],
+            problems: ["Falta de escalabilidad con IA"]
           }
         }
       };
@@ -634,19 +644,7 @@
       const uniqueList = (items) => [...new Set(items)];
 
       const updateBriefResult = () => {
-        if (
-          !briefSummary ||
-          !briefInvestment ||
-          !briefTimeline ||
-          !briefImpact ||
-          !briefAreas ||
-          !briefTools ||
-          !panelInvestment ||
-          !panelTimeline ||
-          !panelImpact ||
-          !panelAreas ||
-          !panelTools
-        )
+        if (!briefSummary || !briefInvestment || !briefTimeline || !briefIncludes || !briefProblems || !briefExample)
           return;
 
         const situationValue = document.querySelector('input[name="currentSituation"]:checked')?.value;
@@ -661,27 +659,21 @@
             "Selecciona tu situación actual y nivel de inversión para calcular un estimado consultivo.";
           briefInvestment.textContent = "-";
           briefTimeline.textContent = "-";
-          briefImpact.textContent = "-";
-          briefAreas.innerHTML = "";
-          briefTools.innerHTML = "";
-          panelInvestment.textContent = "-";
-          panelTimeline.textContent = "-";
-          panelImpact.textContent = "-";
-          panelAreas.innerHTML = "";
-          panelTools.innerHTML = "";
+          briefIncludes.innerHTML = "";
+          briefProblems.innerHTML = "";
+          briefExample.textContent =
+            '"Para tu situación, la inversión suele situarse entre 900€ y 1.600€. Incluye web profesional, optimización móvil y sistema de contacto automatizado. Tiempo estimado: 2 a 3 semanas."';
           return;
         }
 
         const situationData = briefModel.situations[situationValue] || briefModel.situations["no-web"];
         const investmentData = briefModel.investmentLevels[investmentValue] || briefModel.investmentLevels["presencia-digital"];
-        const objectiveCount = selectedObjectives.length;
-        const iaActive = investmentData.iaIncluded || selectedObjectives.includes("ia-futuro") || innovationSelected;
 
         let [investmentMin, investmentMax] = investmentData.baseInvestment;
         let [weeksMin, weeksMax] = investmentData.baseWeeks;
         let [impactMin, impactMax] = investmentData.baseImpact;
-        let areas = [...investmentData.areas, ...situationData.areas];
-        let tools = [...investmentData.tools, ...situationData.tools];
+        let includes = [...investmentData.includes];
+        let problems = [];
 
         investmentMin += situationData.investmentBoost[0];
         investmentMax += situationData.investmentBoost[1];
@@ -699,19 +691,21 @@
           weeksMax += objectiveData.weeksBoost[1];
           impactMin += objectiveData.impactBoost[0];
           impactMax += objectiveData.impactBoost[1];
-          areas = areas.concat(objectiveData.areas);
-          tools = tools.concat(objectiveData.tools);
+          includes = includes.concat(objectiveData.includes);
+          problems = problems.concat(objectiveData.problems);
         });
 
-        if (!iaActive) {
-          areas = areas.filter((item) => !item.toLowerCase().includes("ia"));
-          tools = tools.filter((item) => !item.toLowerCase().includes("ia"));
+        if (situationValue === "no-web") {
+          problems.unshift("Ausencia de presencia digital");
         }
-
-        if (objectiveCount <= 1 && ["presencia-digital", "crecimiento"].includes(investmentValue)) {
-          investmentMin = Math.round(investmentMin * 0.9);
-          investmentMax = Math.round(investmentMax * 0.9);
-          weeksMax = Math.round(weeksMax * 0.9 * 10) / 10;
+        if (situationValue === "web-mejora") {
+          problems.unshift("Web desactualizada o poco efectiva");
+        }
+        if (situationValue === "automatizar-tareas") {
+          problems.unshift("Procesos manuales que frenan el crecimiento");
+        }
+        if (situationValue === "vender-online") {
+          problems.unshift("Ventas online poco estructuradas");
         }
 
         if (investmentValue === "presencia-digital") {
@@ -731,35 +725,24 @@
           weeksMax += innovationData.weeks[1];
           impactMin += innovationData.impact[0];
           impactMax += innovationData.impact[1];
-          areas = areas.concat(innovationData.areas);
-          tools = tools.concat(innovationData.tools);
+          includes = includes.concat(innovationData.tools);
         }
 
         const investmentText = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
         briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
         briefInvestment.textContent = investmentText;
         briefTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
-        briefImpact.textContent = `${impactMin}% – ${impactMax}%`;
 
-        const areaItems = uniqueList(areas).slice(0, 4);
-        const toolItems = uniqueList(tools).slice(0, 4);
-        briefAreas.innerHTML = areaItems.map((item) => `<li>${item}</li>`).join("");
-        briefTools.innerHTML = toolItems.map((item) => `<li>${item}</li>`).join("");
-        panelInvestment.textContent = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
-        panelTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
-        panelImpact.textContent = `${impactMin}% – ${impactMax}%`;
-        panelAreas.innerHTML = areaItems
-          .map(
-            (item) =>
-              `<span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/80">${item}</span>`
-          )
-          .join("");
-        panelTools.innerHTML = toolItems
-          .map(
-            (item) =>
-              `<span class="rounded-full border border-amarilloCorp/40 bg-amarilloCorp/10 px-3 py-1 text-amarilloCorp">${item}</span>`
-          )
-          .join("");
+        const includesItems = uniqueList(includes).slice(0, 6);
+        const problemsItems = uniqueList(problems).slice(0, 6);
+        briefIncludes.innerHTML = includesItems.map((item) => `<li>${item}</li>`).join("");
+        briefProblems.innerHTML = problemsItems.length
+          ? problemsItems.map((item) => `<li>${item}</li>`).join("")
+          : "<li>Sin objetivos seleccionados aún.</li>";
+
+        briefExample.textContent = `"Para tu situación, la inversión suele situarse entre ${investmentText}. Incluye ${includesItems
+          .slice(0, 3)
+          .join(", ")}. Tiempo estimado: ${weeksMin} a ${weeksMax} semanas."`;
       };
 
       [...situationInputs, ...investmentInputs, ...objectiveInputs].forEach((input) => {
