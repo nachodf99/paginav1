@@ -186,27 +186,27 @@
                 <p class="text-xs text-white/60">Paso 1 · Tipo de empresa</p>
                 <div class="grid gap-3 sm:grid-cols-2">
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
-                    <input type="radio" name="companyType" class="accent-amarilloCorp" />
+                    <input type="radio" name="companyType" value="restaurante" class="accent-amarilloCorp" />
                     Restaurante / hostelería
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
-                    <input type="radio" name="companyType" class="accent-amarilloCorp" />
+                    <input type="radio" name="companyType" value="taller" class="accent-amarilloCorp" />
                     Taller o concesionario
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
-                    <input type="radio" name="companyType" class="accent-amarilloCorp" />
+                    <input type="radio" name="companyType" value="clinica" class="accent-amarilloCorp" />
                     Clínica / estética / salud
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
-                    <input type="radio" name="companyType" class="accent-amarilloCorp" />
+                    <input type="radio" name="companyType" value="retail" class="accent-amarilloCorp" />
                     Retail / comercio
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
-                    <input type="radio" name="companyType" class="accent-amarilloCorp" />
+                    <input type="radio" name="companyType" value="servicios" class="accent-amarilloCorp" />
                     Servicios profesionales
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
-                    <input type="radio" name="companyType" class="accent-amarilloCorp" />
+                    <input type="radio" name="companyType" value="otro" class="accent-amarilloCorp" />
                     Otro
                   </label>
                 </div>
@@ -215,31 +215,31 @@
                 <p class="text-xs text-white/60">Paso 2 · Principales fricciones</p>
                 <div class="grid gap-3">
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="telefono" class="pain-point accent-amarilloCorp" />
                     Dependemos demasiado del teléfono
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="fuera-horario" class="pain-point accent-amarilloCorp" />
                     Perdemos clientes fuera de horario
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="manual" class="pain-point accent-amarilloCorp" />
                     Mucho trabajo manual
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="datos" class="pain-point accent-amarilloCorp" />
                     No medimos datos
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="seguimiento" class="pain-point accent-amarilloCorp" />
                     No hacemos seguimiento de clientes
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="ventas-online" class="pain-point accent-amarilloCorp" />
                     Queremos vender más online
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="automatizar" class="pain-point accent-amarilloCorp" />
                     Queremos automatizar
                   </label>
                 </div>
@@ -248,17 +248,47 @@
                 <p class="text-xs text-white/60">Paso 3 · Nivel de ambición</p>
                 <div class="grid gap-3">
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="radio" name="ambition" class="accent-amarilloCorp" />
+                    <input type="radio" name="ambition" value="basic" class="accent-amarilloCorp" />
                     Optimizar lo básico
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="radio" name="ambition" class="accent-amarilloCorp" />
+                    <input type="radio" name="ambition" value="scale" class="accent-amarilloCorp" />
                     Escalar operaciones
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="radio" name="ambition" class="accent-amarilloCorp" />
+                    <input type="radio" name="ambition" value="transform" class="accent-amarilloCorp" />
                     Transformación digital completa con IA
                   </label>
+                </div>
+              </div>
+              <div id="briefResult" class="rounded-2xl border border-amarilloCorp/40 bg-slate-900/70 p-4 text-sm text-white/80">
+                <p class="text-xs uppercase tracking-[0.25em] text-amarilloCorp">Resultado recomendado</p>
+                <p id="briefSummary" class="mt-3">
+                  Selecciona tu tipo de empresa, fricciones y nivel de ambición para ver un estimado consultivo.
+                </p>
+                <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                  <div>
+                    <p class="text-xs text-white/50">Rango de inversión</p>
+                    <p id="briefInvestment" class="font-semibold text-white">-</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-white/50">Tiempo estimado</p>
+                    <p id="briefTimeline" class="font-semibold text-white">-</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-white/50">Impacto operativo</p>
+                    <p id="briefImpact" class="font-semibold text-white">-</p>
+                  </div>
+                </div>
+                <div class="mt-4 grid gap-3 sm:grid-cols-2">
+                  <div>
+                    <p class="text-xs text-white/50">Áreas mejoradas</p>
+                    <ul id="briefAreas" class="mt-2 list-disc list-inside space-y-1 text-white/70"></ul>
+                  </div>
+                  <div>
+                    <p class="text-xs text-white/50">Herramientas sugeridas</p>
+                    <ul id="briefTools" class="mt-2 list-disc list-inside space-y-1 text-white/70"></ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -420,10 +450,6 @@
       const monthlySavings = document.getElementById("monthlySavings");
       const annualSavings = document.getElementById("annualSavings");
       const roiTotal = document.getElementById("roiTotal");
-      const budgetTier = document.getElementById("budgetTier");
-      const budgetOptions = document.querySelectorAll(".budget-option");
-      const budgetTotal = document.getElementById("budgetTotal");
-
       const formatCurrency = (value) =>
         new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
 
@@ -446,33 +472,217 @@
       rateRange.addEventListener("input", updateROI);
       updateROI();
 
-      const budgetMatrix = {
-        min: [1200, 2400, 3500, 4800],
-        mid: [2000, 3800, 5500, 7200],
-        max: [3200, 5400, 8000, 10500]
+      const briefSummary = document.getElementById("briefSummary");
+      const briefInvestment = document.getElementById("briefInvestment");
+      const briefTimeline = document.getElementById("briefTimeline");
+      const briefImpact = document.getElementById("briefImpact");
+      const briefAreas = document.getElementById("briefAreas");
+      const briefTools = document.getElementById("briefTools");
+      const companyInputs = document.querySelectorAll('input[name="companyType"]');
+      const ambitionInputs = document.querySelectorAll('input[name="ambition"]');
+      const painInputs = document.querySelectorAll(".pain-point");
+
+      const briefModel = {
+        companyTypes: {
+          restaurante: {
+            label: "Restaurante / hostelería",
+            baseInvestment: [3500, 6000],
+            baseWeeks: [3, 5],
+            baseImpact: [28, 42],
+            areas: ["Reservas y turnos", "Atención fuera de horario", "Gestión de sala"],
+            tools: ["Motor de reservas", "WhatsApp Business", "Dashboard operativo"]
+          },
+          taller: {
+            label: "Taller o concesionario",
+            baseInvestment: [4200, 7200],
+            baseWeeks: [4, 6],
+            baseImpact: [25, 38],
+            areas: ["Gestión de citas", "Seguimiento de clientes", "Inventario y repuestos"],
+            tools: ["CRM postventa", "Agenda automatizada", "Notificaciones SMS"]
+          },
+          clinica: {
+            label: "Clínica / estética / salud",
+            baseInvestment: [4800, 8200],
+            baseWeeks: [4, 7],
+            baseImpact: [30, 45],
+            areas: ["Agenda y recordatorios", "Experiencia del paciente", "Gestión administrativa"],
+            tools: ["Historial digital", "Confirmaciones automáticas", "Portal paciente"]
+          },
+          retail: {
+            label: "Retail / comercio",
+            baseInvestment: [3600, 6400],
+            baseWeeks: [3, 5],
+            baseImpact: [22, 36],
+            areas: ["Ventas online", "Gestión de stock", "Fidelización"],
+            tools: ["Ecommerce integrado", "Email automation", "Analítica de ventas"]
+          },
+          servicios: {
+            label: "Servicios profesionales",
+            baseInvestment: [4000, 7000],
+            baseWeeks: [4, 6],
+            baseImpact: [26, 40],
+            areas: ["Pipeline comercial", "Entrega de proyectos", "Facturación"],
+            tools: ["CRM y automatizaciones", "Gestión documental", "Dashboards KPI"]
+          },
+          otro: {
+            label: "Empresa multiproceso",
+            baseInvestment: [3800, 6800],
+            baseWeeks: [4, 6],
+            baseImpact: [24, 38],
+            areas: ["Operaciones internas", "Atención al cliente", "Control de datos"],
+            tools: ["Workflow centralizado", "Automatización de reportes", "Integraciones API"]
+          }
+        },
+        pains: {
+          telefono: {
+            investmentBoost: [250, 400],
+            weeksBoost: [0.2, 0.4],
+            impactBoost: [3, 5],
+            areas: ["Atención omnicanal"],
+            tools: ["Telefonía cloud"]
+          },
+          "fuera-horario": {
+            investmentBoost: [300, 500],
+            weeksBoost: [0.3, 0.5],
+            impactBoost: [4, 6],
+            areas: ["Captura 24/7"],
+            tools: ["Chatbot y captación"]
+          },
+          manual: {
+            investmentBoost: [350, 600],
+            weeksBoost: [0.4, 0.7],
+            impactBoost: [5, 8],
+            areas: ["Automatización operativa"],
+            tools: ["RPA ligero"]
+          },
+          datos: {
+            investmentBoost: [200, 350],
+            weeksBoost: [0.2, 0.4],
+            impactBoost: [2, 4],
+            areas: ["Analítica y reporting"],
+            tools: ["BI dashboards"]
+          },
+          seguimiento: {
+            investmentBoost: [280, 450],
+            weeksBoost: [0.3, 0.5],
+            impactBoost: [3, 6],
+            areas: ["Customer success"],
+            tools: ["Secuencias CRM"]
+          },
+          "ventas-online": {
+            investmentBoost: [320, 520],
+            weeksBoost: [0.4, 0.6],
+            impactBoost: [4, 7],
+            areas: ["Canal digital"],
+            tools: ["Checkout optimizado"]
+          },
+          automatizar: {
+            investmentBoost: [380, 650],
+            weeksBoost: [0.5, 0.8],
+            impactBoost: [6, 9],
+            areas: ["Automatización transversal"],
+            tools: ["Integraciones clave"]
+          }
+        },
+        ambitions: {
+          basic: {
+            label: "Optimizar lo básico",
+            investmentMultiplier: 1,
+            weeksAdd: [0, 1],
+            impactAdd: [0, 4]
+          },
+          scale: {
+            label: "Escalar operaciones",
+            investmentMultiplier: 1.25,
+            weeksAdd: [1, 2],
+            impactAdd: [5, 10]
+          },
+          transform: {
+            label: "Transformación digital completa con IA",
+            investmentMultiplier: 1.6,
+            weeksAdd: [2, 4],
+            impactAdd: [10, 18]
+          }
+        }
       };
 
-      const updateBudget = () => {
-        if (!budgetTier || !budgetTotal) return;
-        const tier = budgetTier.value;
-        const prices = budgetMatrix[tier] || [];
-        let total = 0;
+      const uniqueList = (items) => [...new Set(items)];
+      const formatRange = (minValue, maxValue, suffix = "") =>
+        `${minValue}${suffix} – ${maxValue}${suffix}`;
 
-        budgetOptions.forEach((option) => {
-          const index = Number(option.dataset.index);
-          if (option.checked && Number.isFinite(prices[index])) {
-            total += prices[index];
-          }
+      const updateBriefResult = () => {
+        if (!briefSummary || !briefInvestment || !briefTimeline || !briefImpact || !briefAreas || !briefTools) return;
+
+        const companyValue = document.querySelector('input[name="companyType"]:checked')?.value;
+        const ambitionValue = document.querySelector('input[name="ambition"]:checked')?.value;
+        const selectedPains = Array.from(painInputs)
+          .filter((input) => input.checked)
+          .map((input) => input.value);
+
+        if (!companyValue || !ambitionValue) {
+          briefSummary.textContent =
+            "Selecciona tu tipo de empresa y nivel de ambición para calcular un estimado consultivo.";
+          briefInvestment.textContent = "-";
+          briefTimeline.textContent = "-";
+          briefImpact.textContent = "-";
+          briefAreas.innerHTML = "";
+          briefTools.innerHTML = "";
+          return;
+        }
+
+        const companyData = briefModel.companyTypes[companyValue] || briefModel.companyTypes.otro;
+        const ambitionData = briefModel.ambitions[ambitionValue] || briefModel.ambitions.basic;
+
+        let [investmentMin, investmentMax] = companyData.baseInvestment;
+        let [weeksMin, weeksMax] = companyData.baseWeeks;
+        let [impactMin, impactMax] = companyData.baseImpact;
+        let areas = [...companyData.areas];
+        let tools = [...companyData.tools];
+
+        selectedPains.forEach((pain) => {
+          const painData = briefModel.pains[pain];
+          if (!painData) return;
+          investmentMin += painData.investmentBoost[0];
+          investmentMax += painData.investmentBoost[1];
+          weeksMin += painData.weeksBoost[0];
+          weeksMax += painData.weeksBoost[1];
+          impactMin += painData.impactBoost[0];
+          impactMax += painData.impactBoost[1];
+          areas = areas.concat(painData.areas);
+          tools = tools.concat(painData.tools);
         });
 
-        budgetTotal.textContent = formatCurrency(total);
+        investmentMin = Math.round(investmentMin * ambitionData.investmentMultiplier);
+        investmentMax = Math.round(investmentMax * ambitionData.investmentMultiplier);
+        weeksMin = Math.round((weeksMin + ambitionData.weeksAdd[0]) * 10) / 10;
+        weeksMax = Math.round((weeksMax + ambitionData.weeksAdd[1]) * 10) / 10;
+        impactMin = Math.round(impactMin + ambitionData.impactAdd[0]);
+        impactMax = Math.round(impactMax + ambitionData.impactAdd[1]);
+
+        const painsWeight = Math.max(selectedPains.length, 1);
+        investmentMax += painsWeight * 120;
+        weeksMax = Math.round((weeksMax + painsWeight * 0.2) * 10) / 10;
+        impactMax = Math.min(impactMax + painsWeight * 2, 80);
+
+        const investmentText = `${formatCurrency(investmentMin)} y ${formatCurrency(investmentMax)}`;
+        const timelineText = formatRange(weeksMin, weeksMax, " semanas");
+        const impactText = formatRange(impactMin, impactMax, "%");
+
+        briefSummary.textContent = `Para un negocio como el tuyo, un proyecto de este nivel suele situarse entre ${investmentText}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y permite reducir carga manual hasta un ${impactMin}–${impactMax}%.`;
+        briefInvestment.textContent = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
+        briefTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
+        briefImpact.textContent = `${impactMin}% – ${impactMax}%`;
+
+        const areaItems = uniqueList(areas).slice(0, 4);
+        const toolItems = uniqueList(tools).slice(0, 4);
+        briefAreas.innerHTML = areaItems.map((item) => `<li>${item}</li>`).join("");
+        briefTools.innerHTML = toolItems.map((item) => `<li>${item}</li>`).join("");
       };
 
-      budgetTier.addEventListener("change", updateBudget);
-      budgetOptions.forEach((option) => {
-        option.addEventListener("change", updateBudget);
+      [...companyInputs, ...ambitionInputs, ...painInputs].forEach((input) => {
+        input.addEventListener("change", updateBriefResult);
       });
-      updateBudget();
+      updateBriefResult();
     </script>
   </body>
 </html>
