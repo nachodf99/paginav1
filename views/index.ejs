@@ -139,120 +139,151 @@
             Empieza con un servicio pequeño, escala por etapas y añade automatización o IA solo si lo necesitas.
           </p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-8 items-start">
-          <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 lg:p-8 space-y-8">
-            <div class="space-y-4">
-              <p class="text-xs uppercase tracking-[0.25em] text-amarilloCorp">Paso 1 · Situación actual</p>
-              <div class="grid gap-3 sm:grid-cols-2">
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 transition hover:border-amarilloCorp/60">
-                  <input type="radio" name="currentSituation" value="no-web" class="accent-amarilloCorp" />
-                  No tengo web
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 transition hover:border-amarilloCorp/60">
-                  <input type="radio" name="currentSituation" value="needs-improve" class="accent-amarilloCorp" />
-                  Tengo web pero necesita mejora
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 transition hover:border-amarilloCorp/60">
-                  <input type="radio" name="currentSituation" value="sell-online" class="accent-amarilloCorp" />
-                  Quiero vender online
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 transition hover:border-amarilloCorp/60">
-                  <input type="radio" name="currentSituation" value="automate" class="accent-amarilloCorp" />
-                  Quiero automatizar tareas
-                </label>
-              </div>
-            </div>
-            <div class="space-y-4">
-              <p class="text-xs uppercase tracking-[0.25em] text-amarilloCorp">Paso 2 · Objetivos</p>
-              <div class="grid gap-3 sm:grid-cols-2">
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3">
-                  <input type="checkbox" value="clientes" class="objective accent-amarilloCorp" />
-                  Conseguir más clientes
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3">
-                  <input type="checkbox" value="mostrar" class="objective accent-amarilloCorp" />
-                  Mostrar mejor mi negocio
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3">
-                  <input type="checkbox" value="reservas" class="objective accent-amarilloCorp" />
-                  Permitir reservas o citas
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3">
-                  <input type="checkbox" value="vender" class="objective accent-amarilloCorp" />
-                  Vender productos
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3">
-                  <input type="checkbox" value="reducir-llamadas" class="objective accent-amarilloCorp" />
-                  Reducir llamadas
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3">
-                  <input type="checkbox" value="automatizar" class="objective accent-amarilloCorp" />
-                  Automatizar tareas repetitivas
-                </label>
-                <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3 sm:col-span-2">
-                  <input type="checkbox" value="ia-futuro" class="objective accent-amarilloCorp" />
-                  Más adelante integrar IA
-                </label>
-              </div>
-            </div>
-            <div class="space-y-4">
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <p class="text-xs uppercase tracking-[0.25em] text-amarilloCorp">Paso 3 · Nivel de inversión</p>
-                <label class="flex items-center gap-2 text-xs text-white/60">
-                  <input id="soloWeb" type="checkbox" class="accent-amarilloCorp" />
-                  SOLO WEB
-                </label>
-              </div>
-              <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                <label class="flex h-full cursor-pointer flex-col gap-3 rounded-2xl border border-white/10 bg-slate-900/60 p-4 transition hover:border-amarilloCorp/60">
-                  <div class="flex items-center justify-between text-sm font-semibold">
-                    <span>Presencia digital</span>
-                    <input type="radio" name="investmentLevel" value="presencia" class="accent-amarilloCorp" />
-                  </div>
-                  <p class="text-xs text-white/60">Para empezar bien.</p>
-                  <p class="text-lg font-semibold text-amarilloCorp">700 – 1200€</p>
-                </label>
-                <label class="flex h-full cursor-pointer flex-col gap-3 rounded-2xl border border-white/10 bg-slate-900/60 p-4 transition hover:border-amarilloCorp/60">
-                  <div class="flex items-center justify-between text-sm font-semibold">
-                    <span>Crecimiento</span>
-                    <input type="radio" name="investmentLevel" value="crecimiento" class="accent-amarilloCorp" />
-                  </div>
-                  <p class="text-xs text-white/60">Captar más y automatizar citas.</p>
-                  <p class="text-lg font-semibold text-amarilloCorp">1200 – 2500€</p>
-                </label>
-                <label class="flex h-full cursor-pointer flex-col gap-3 rounded-2xl border border-white/10 bg-slate-900/60 p-4 transition hover:border-amarilloCorp/60">
-                  <div class="flex items-center justify-between text-sm font-semibold">
-                    <span>Optimización</span>
-                    <input type="radio" name="investmentLevel" value="optimizacion" class="accent-amarilloCorp" />
-                  </div>
-                  <p class="text-xs text-white/60">Automatización interna y seguimiento.</p>
-                  <p class="text-lg font-semibold text-amarilloCorp">2000 – 4000€</p>
-                </label>
-                <label class="flex h-full cursor-pointer flex-col gap-3 rounded-2xl border border-amarilloCorp/40 bg-slate-900/70 p-4 transition hover:border-amarilloCorp">
-                  <div class="flex items-center justify-between text-sm font-semibold">
-                    <span>Innovación (opcional)</span>
-                    <input id="innovationToggle" type="checkbox" name="innovationToggle" class="accent-amarilloCorp" />
-                  </div>
-                  <p class="text-xs text-white/60">IA y análisis avanzado.</p>
-                  <p class="text-lg font-semibold text-amarilloCorp">1500 – 5000€</p>
-                </label>
-              </div>
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] gap-8">
+          <div class="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left text-white/70">
+                <thead class="bg-slate-900/60 text-xs uppercase tracking-[0.2em] text-white/80">
+                  <tr>
+                    <th class="px-4 py-4">Nivel</th>
+                    <th class="px-4 py-4">Web básica</th>
+                    <th class="px-4 py-4">Web + Reservas</th>
+                    <th class="px-4 py-4">Automatizaciones</th>
+                    <th class="px-4 py-4">IA</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-white/10">
+                  <tr>
+                    <td class="px-4 py-4 text-white/80">Precio mínimo</td>
+                    <td class="px-4 py-4">€1.200</td>
+                    <td class="px-4 py-4">€2.400</td>
+                    <td class="px-4 py-4">€3.500</td>
+                    <td class="px-4 py-4">€4.800</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-4 text-white/80">Precio medio</td>
+                    <td class="px-4 py-4">€2.000</td>
+                    <td class="px-4 py-4">€3.800</td>
+                    <td class="px-4 py-4">€5.500</td>
+                    <td class="px-4 py-4">€7.200</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-4 text-white/80">Precio alto</td>
+                    <td class="px-4 py-4">€3.200</td>
+                    <td class="px-4 py-4">€5.400</td>
+                    <td class="px-4 py-4">€8.000</td>
+                    <td class="px-4 py-4">€10.500</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-6 lg:p-8 space-y-5">
-            <p class="text-sm uppercase tracking-[0.3em] text-amarilloCorp">Resultado final</p>
-            <div id="briefResult" class="rounded-2xl border border-amarilloCorp/40 bg-slate-900/70 p-4 text-sm text-white/80">
-              <p id="briefSummary">
-                Completa los tres pasos para ver un estimado ajustado a tu momento actual.
-              </p>
-              <div class="mt-4 grid gap-4 sm:grid-cols-2">
-                <div>
-                  <p class="text-xs text-white/50">Rango estimado</p>
-                  <p id="briefInvestment" class="font-semibold text-white">-</p>
+          <div class="rounded-3xl border border-white/10 bg-slate-900/60 p-6">
+            <p class="text-sm uppercase tracking-[0.3em] text-amarilloCorp">Brief ejecutivo</p>
+            <p class="mt-3 text-sm text-white/70">
+              Completa este flujo rápido para ajustar la propuesta a tu momento, objetivos y rango de inversión deseado.
+            </p>
+            <div class="mt-6 space-y-6">
+              <div class="space-y-3 text-sm text-white/70">
+                <p class="text-xs text-white/60">Paso 1 · Situación actual</p>
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <input type="radio" name="currentSituation" value="no-web" class="accent-amarilloCorp" />
+                    No tengo web
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <input type="radio" name="currentSituation" value="web-mejora" class="accent-amarilloCorp" />
+                    Tengo web pero necesita mejora
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <input type="radio" name="currentSituation" value="vender-online" class="accent-amarilloCorp" />
+                    Quiero vender online
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <input type="radio" name="currentSituation" value="automatizar-tareas" class="accent-amarilloCorp" />
+                    Quiero automatizar tareas
+                  </label>
                 </div>
-                <div>
-                  <p class="text-xs text-white/50">Tiempo de entrega</p>
-                  <p id="briefTimeline" class="font-semibold text-white">-</p>
+              </div>
+              <div class="space-y-3 text-sm text-white/70">
+                <p class="text-xs text-white/60">Paso 2 · Objetivos</p>
+                <div class="grid gap-3">
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <input type="checkbox" value="mas-clientes" class="objective-input accent-amarilloCorp" />
+                    Más clientes
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <input type="checkbox" value="mostrar-negocio" class="objective-input accent-amarilloCorp" />
+                    Mostrar negocio
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <input type="checkbox" value="reservas-citas" class="objective-input accent-amarilloCorp" />
+                    Reservas / citas
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <input type="checkbox" value="vender-productos" class="objective-input accent-amarilloCorp" />
+                    Vender productos
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <input type="checkbox" value="reducir-llamadas" class="objective-input accent-amarilloCorp" />
+                    Reducir llamadas
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <input type="checkbox" value="automatizar-repetitivas" class="objective-input accent-amarilloCorp" />
+                    Automatizar tareas repetitivas
+                  </label>
+                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <input type="checkbox" value="ia-futuro" class="objective-input accent-amarilloCorp" />
+                    Integrar IA más adelante
+                  </label>
+                </div>
+              </div>
+              <div class="space-y-3 text-sm text-white/70">
+                <p class="text-xs text-white/60">Paso 3 · Nivel de inversión</p>
+                <div class="grid gap-4">
+                  <label class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <div class="flex items-start gap-3">
+                      <input type="radio" name="investmentLevel" value="presencia-digital" class="mt-1 accent-amarilloCorp" />
+                      <div>
+                        <p class="font-semibold text-white">Presencia digital</p>
+                        <p class="text-xs text-white/60">700–1200€</p>
+                      </div>
+                      <span class="ml-auto inline-flex items-center rounded-full border border-amarilloCorp/40 bg-amarilloCorp/10 px-3 py-1 text-[10px] font-semibold text-amarilloCorp">
+                        SOLO WEB
+                      </span>
+                    </div>
+                    <p class="text-xs text-white/60">Ideal para lanzar una web clara y profesional desde cero.</p>
+                  </label>
+                  <label class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <div class="flex items-start gap-3">
+                      <input type="radio" name="investmentLevel" value="crecimiento" class="mt-1 accent-amarilloCorp" />
+                      <div>
+                        <p class="font-semibold text-white">Crecimiento</p>
+                        <p class="text-xs text-white/60">1200–2500€</p>
+                      </div>
+                    </div>
+                    <p class="text-xs text-white/60">Optimiza captación, contenidos y experiencia de usuario.</p>
+                  </label>
+                  <label class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <div class="flex items-start gap-3">
+                      <input type="radio" name="investmentLevel" value="optimizacion" class="mt-1 accent-amarilloCorp" />
+                      <div>
+                        <p class="font-semibold text-white">Optimización</p>
+                        <p class="text-xs text-white/60">2000–4000€</p>
+                      </div>
+                    </div>
+                    <p class="text-xs text-white/60">Automatiza flujos clave y mejora la conversión.</p>
+                  </label>
+                  <label class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <div class="flex items-start gap-3">
+                      <input type="radio" name="investmentLevel" value="innovacion" class="mt-1 accent-amarilloCorp" />
+                      <div>
+                        <p class="font-semibold text-white">Innovación (opcional)</p>
+                        <p class="text-xs text-white/60">3000–6000€</p>
+                      </div>
+                    </div>
+                    <p class="text-xs text-white/60">Incluye IA solo si quieres activarla en esta fase.</p>
+                  </label>
                 </div>
               </div>
               <div class="mt-4 space-y-3">
@@ -455,101 +486,140 @@
       const briefSummary = document.getElementById("briefSummary");
       const briefInvestment = document.getElementById("briefInvestment");
       const briefTimeline = document.getElementById("briefTimeline");
-      const briefIncludes = document.getElementById("briefIncludes");
-      const briefProblems = document.getElementById("briefProblems");
+      const briefImpact = document.getElementById("briefImpact");
+      const briefAreas = document.getElementById("briefAreas");
+      const briefTools = document.getElementById("briefTools");
+      const panelInvestment = document.getElementById("panelInvestment");
+      const panelTimeline = document.getElementById("panelTimeline");
+      const panelImpact = document.getElementById("panelImpact");
+      const panelAreas = document.getElementById("panelAreas");
+      const panelTools = document.getElementById("panelTools");
       const situationInputs = document.querySelectorAll('input[name="currentSituation"]');
-      const objectiveInputs = document.querySelectorAll(".objective");
       const investmentInputs = document.querySelectorAll('input[name="investmentLevel"]');
-      const innovationToggle = document.getElementById("innovationToggle");
-      const soloWebInput = document.getElementById("soloWeb");
+      const objectiveInputs = document.querySelectorAll(".objective-input");
 
-      const estimatorModel = {
-        levels: {
-          presencia: {
+      const briefModel = {
+        situations: {
+          "no-web": {
+            label: "Sin web",
+            investmentBoost: [0, 150],
+            weeksBoost: [0.5, 1],
+            impactBoost: [2, 5],
+            areas: ["Lanzamiento web"],
+            tools: ["Arquitectura básica"]
+          },
+          "web-mejora": {
+            label: "Web a optimizar",
+            investmentBoost: [150, 300],
+            weeksBoost: [0.5, 1.5],
+            impactBoost: [3, 6],
+            areas: ["Optimización UX/UI"],
+            tools: ["Auditoría de contenidos"]
+          },
+          "vender-online": {
+            label: "Venta online",
+            investmentBoost: [250, 500],
+            weeksBoost: [1, 2],
+            impactBoost: [4, 8],
+            areas: ["Comercio digital"],
+            tools: ["Checkout y pagos"]
+          },
+          "automatizar-tareas": {
+            label: "Automatización inicial",
+            investmentBoost: [300, 600],
+            weeksBoost: [1, 2.5],
+            impactBoost: [6, 10],
+            areas: ["Procesos internos"],
+            tools: ["Flujos automáticos"]
+          }
+        },
+        investmentLevels: {
+          "presencia-digital": {
             label: "Presencia digital",
-            range: [700, 1200],
-            weeks: [2, 3],
-            includes: ["Web profesional", "Optimización móvil", "Formulario de contacto"]
+            baseInvestment: [700, 1200],
+            baseWeeks: [2, 4],
+            baseImpact: [8, 16],
+            areas: ["Web corporativa", "Identidad visual"],
+            tools: ["Diseño web", "SEO básico"],
+            iaIncluded: false
           },
           crecimiento: {
             label: "Crecimiento",
-            range: [1200, 2500],
-            weeks: [3, 5],
-            includes: ["Web orientada a ventas", "Sistema de reservas o citas", "Automatización de contacto"]
+            baseInvestment: [1200, 2500],
+            baseWeeks: [3, 5],
+            baseImpact: [12, 22],
+            areas: ["Captación de clientes", "Contenido estratégico"],
+            tools: ["Landing optimizadas", "Analítica web"],
+            iaIncluded: false
           },
           optimizacion: {
             label: "Optimización",
-            range: [2000, 4000],
-            weeks: [4, 7],
-            includes: ["Automatizaciones internas", "Seguimiento de clientes", "Panel de métricas clave"]
-          }
-        },
-        innovation: {
-          label: "Innovación",
-          range: [1500, 5000],
-          weeks: [2, 4],
-          includes: ["IA aplicada al negocio", "Análisis avanzado de datos"]
-        },
-        situations: {
-          "no-web": {
-            includes: ["Diseño web desde cero"],
-            problems: ["No tienes presencia digital"]
+            baseInvestment: [2000, 4000],
+            baseWeeks: [4, 7],
+            baseImpact: [18, 30],
+            areas: ["Conversión y automatización", "Procesos digitales"],
+            tools: ["Automatizaciones web", "Integraciones"],
+            iaIncluded: false
           },
-          "needs-improve": {
-            includes: ["Rediseño y mejoras de rendimiento"],
-            problems: ["La web actual no convierte"]
-          },
-          "sell-online": {
-            includes: ["Catálogo o tienda online"],
-            problems: ["No estás vendiendo en internet"]
-          },
-          automate: {
-            includes: ["Flujos automatizados básicos"],
-            problems: ["Procesos manuales que consumen tiempo"]
+          innovacion: {
+            label: "Innovación",
+            baseInvestment: [3000, 6000],
+            baseWeeks: [5, 8],
+            baseImpact: [22, 36],
+            areas: ["Soluciones avanzadas", "Experiencias personalizadas"],
+            tools: ["Dashboards inteligentes", "Asistentes digitales"],
+            iaIncluded: true
           }
         },
         objectives: {
-          clientes: {
-            boost: [150, 350],
-            weeks: [0.2, 0.4],
-            includes: ["Landing enfocada a captación"],
-            problems: ["Falta de nuevos clientes"]
+          "mas-clientes": {
+            investmentBoost: [150, 300],
+            weeksBoost: [0.3, 0.6],
+            impactBoost: [2, 4],
+            areas: ["Captación comercial"],
+            tools: ["SEO local"]
           },
-          mostrar: {
-            boost: [100, 250],
-            weeks: [0.1, 0.3],
-            includes: ["Secciones de servicios y casos"],
-            problems: ["Baja visibilidad del negocio"]
+          "mostrar-negocio": {
+            investmentBoost: [120, 250],
+            weeksBoost: [0.2, 0.5],
+            impactBoost: [1, 3],
+            areas: ["Branding y contenido"],
+            tools: ["Galerías y casos"]
           },
-          reservas: {
-            boost: [200, 400],
-            weeks: [0.3, 0.6],
-            includes: ["Agenda y reservas online"],
-            problems: ["Gestión manual de citas"]
+          "reservas-citas": {
+            investmentBoost: [200, 400],
+            weeksBoost: [0.4, 0.8],
+            impactBoost: [3, 6],
+            areas: ["Reservas y agenda"],
+            tools: ["Motor de reservas"]
           },
-          vender: {
-            boost: [250, 500],
-            weeks: [0.4, 0.7],
-            includes: ["Checkout simple de productos"],
-            problems: ["No puedes vender productos online"]
+          "vender-productos": {
+            investmentBoost: [250, 500],
+            weeksBoost: [0.6, 1],
+            impactBoost: [4, 7],
+            areas: ["Ecommerce"],
+            tools: ["Catálogo online"]
           },
           "reducir-llamadas": {
-            boost: [120, 260],
-            weeks: [0.1, 0.3],
-            includes: ["Canales de contacto automatizados"],
-            problems: ["Demasiadas llamadas repetitivas"]
+            investmentBoost: [180, 320],
+            weeksBoost: [0.3, 0.6],
+            impactBoost: [3, 5],
+            areas: ["Atención digital"],
+            tools: ["WhatsApp Business"]
           },
-          automatizar: {
-            boost: [300, 600],
-            weeks: [0.4, 0.8],
-            includes: ["Automatización de tareas repetitivas"],
-            problems: ["Tareas internas lentas"]
+          "automatizar-repetitivas": {
+            investmentBoost: [280, 520],
+            weeksBoost: [0.6, 1.2],
+            impactBoost: [5, 9],
+            areas: ["Automatización de tareas"],
+            tools: ["Workflows"]
           },
           "ia-futuro": {
-            boost: [0, 150],
-            weeks: [0, 0.2],
-            includes: ["Preparación para integrar IA"],
-            problems: ["No hay base para IA futura"]
+            investmentBoost: [300, 600],
+            weeksBoost: [0.6, 1.2],
+            impactBoost: [4, 8],
+            areas: ["Capacidades con IA"],
+            tools: ["Asistente IA"]
           }
         }
       };
@@ -557,55 +627,93 @@
       const uniqueList = (items) => [...new Set(items)];
 
       const updateBriefResult = () => {
-        if (!briefSummary || !briefInvestment || !briefTimeline || !briefIncludes || !briefProblems) return;
+        if (
+          !briefSummary ||
+          !briefInvestment ||
+          !briefTimeline ||
+          !briefImpact ||
+          !briefAreas ||
+          !briefTools ||
+          !panelInvestment ||
+          !panelTimeline ||
+          !panelImpact ||
+          !panelAreas ||
+          !panelTools
+        )
+          return;
 
         const situationValue = document.querySelector('input[name="currentSituation"]:checked')?.value;
-        const baseLevel = document.querySelector('input[name="investmentLevel"]:checked')?.value;
-        const innovationSelected = Boolean(innovationToggle?.checked);
-        const soloWeb = Boolean(soloWebInput?.checked);
+        const investmentValue = document.querySelector('input[name="investmentLevel"]:checked')?.value;
         const selectedObjectives = Array.from(objectiveInputs)
           .filter((input) => input.checked)
           .map((input) => input.value);
 
-        if (!situationValue || !baseLevel) {
-          briefSummary.textContent = "Completa los tres pasos para ver un estimado ajustado a tu momento actual.";
+        if (!situationValue || !investmentValue) {
+          briefSummary.textContent =
+            "Selecciona tu situación actual y nivel de inversión para calcular un estimado consultivo.";
           briefInvestment.textContent = "-";
           briefTimeline.textContent = "-";
-          briefIncludes.innerHTML = "";
-          briefProblems.innerHTML = "";
+          briefImpact.textContent = "-";
+          briefAreas.innerHTML = "";
+          briefTools.innerHTML = "";
+          panelInvestment.textContent = "-";
+          panelTimeline.textContent = "-";
+          panelImpact.textContent = "-";
+          panelAreas.innerHTML = "";
+          panelTools.innerHTML = "";
           return;
         }
 
-        const levelData = estimatorModel.levels[baseLevel];
-        let [minInvestment, maxInvestment] = levelData.range;
-        let [minWeeks, maxWeeks] = levelData.weeks;
-        let includes = [...levelData.includes];
-        let problems = [];
+        const situationData = briefModel.situations[situationValue] || briefModel.situations["no-web"];
+        const investmentData = briefModel.investmentLevels[investmentValue] || briefModel.investmentLevels["presencia-digital"];
+        const objectiveCount = selectedObjectives.length;
+        const iaActive = investmentData.iaIncluded || selectedObjectives.includes("ia-futuro");
 
-        if (soloWeb) {
-          includes = ["Web profesional", "Optimización móvil", "Formulario de contacto"];
-          minInvestment = Math.min(minInvestment, 900);
-          maxInvestment = Math.min(maxInvestment, 1400);
-          minWeeks = Math.min(minWeeks, 2);
-          maxWeeks = Math.min(maxWeeks, 3.5);
-        }
+        let [investmentMin, investmentMax] = investmentData.baseInvestment;
+        let [weeksMin, weeksMax] = investmentData.baseWeeks;
+        let [impactMin, impactMax] = investmentData.baseImpact;
+        let areas = [...investmentData.areas, ...situationData.areas];
+        let tools = [...investmentData.tools, ...situationData.tools];
 
-        const situationData = estimatorModel.situations[situationValue];
-        if (situationData) {
-          includes = includes.concat(situationData.includes);
-          problems = problems.concat(situationData.problems);
-        }
+        investmentMin += situationData.investmentBoost[0];
+        investmentMax += situationData.investmentBoost[1];
+        weeksMin += situationData.weeksBoost[0];
+        weeksMax += situationData.weeksBoost[1];
+        impactMin += situationData.impactBoost[0];
+        impactMax += situationData.impactBoost[1];
 
         selectedObjectives.forEach((objective) => {
-          const objectiveData = estimatorModel.objectives[objective];
+          const objectiveData = briefModel.objectives[objective];
           if (!objectiveData) return;
-          minInvestment += objectiveData.boost[0];
-          maxInvestment += objectiveData.boost[1];
-          minWeeks += objectiveData.weeks[0];
-          maxWeeks += objectiveData.weeks[1];
-          includes = includes.concat(objectiveData.includes);
-          problems = problems.concat(objectiveData.problems);
+          investmentMin += objectiveData.investmentBoost[0];
+          investmentMax += objectiveData.investmentBoost[1];
+          weeksMin += objectiveData.weeksBoost[0];
+          weeksMax += objectiveData.weeksBoost[1];
+          impactMin += objectiveData.impactBoost[0];
+          impactMax += objectiveData.impactBoost[1];
+          areas = areas.concat(objectiveData.areas);
+          tools = tools.concat(objectiveData.tools);
         });
+
+        if (!iaActive) {
+          areas = areas.filter((item) => !item.toLowerCase().includes("ia"));
+          tools = tools.filter((item) => !item.toLowerCase().includes("ia"));
+        }
+
+        if (objectiveCount <= 1 && ["presencia-digital", "crecimiento"].includes(investmentValue)) {
+          investmentMin = Math.round(investmentMin * 0.9);
+          investmentMax = Math.round(investmentMax * 0.9);
+          weeksMax = Math.round(weeksMax * 0.9 * 10) / 10;
+        }
+
+        if (investmentValue === "presencia-digital") {
+          investmentMin = Math.max(investmentMin, 700);
+        }
+
+        weeksMin = Math.round(weeksMin * 10) / 10;
+        weeksMax = Math.round(weeksMax * 10) / 10;
+        impactMin = Math.round(impactMin);
+        impactMax = Math.min(Math.round(impactMax), 80);
 
         if (innovationSelected) {
           const innovationData = estimatorModel.innovation;
@@ -617,29 +725,33 @@
           problems = problems.concat(["Necesitas innovación avanzada"]);
         }
 
-        minInvestment = Math.round(minInvestment);
-        maxInvestment = Math.round(maxInvestment);
-        minWeeks = Math.round(minWeeks * 10) / 10;
-        maxWeeks = Math.round(maxWeeks * 10) / 10;
+        briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
+        briefInvestment.textContent = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
+        briefTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
+        briefImpact.textContent = `${impactMin}% – ${impactMax}%`;
 
-        briefSummary.textContent = `Para tu situación, la inversión suele situarse entre ${formatCurrency(
-          minInvestment
-        )} y ${formatCurrency(maxInvestment)}. Incluye ${uniqueList(includes).slice(0, 3).join(", ")}. Tiempo estimado: ${
-          minWeeks
-        } a ${maxWeeks} semanas.`;
-        briefInvestment.textContent = `${formatCurrency(minInvestment)} – ${formatCurrency(maxInvestment)}`;
-        briefTimeline.textContent = `${minWeeks} – ${maxWeeks} semanas`;
-        briefIncludes.innerHTML = uniqueList(includes)
-          .slice(0, 6)
-          .map((item) => `<li>${item}</li>`)
+        const areaItems = uniqueList(areas).slice(0, 4);
+        const toolItems = uniqueList(tools).slice(0, 4);
+        briefAreas.innerHTML = areaItems.map((item) => `<li>${item}</li>`).join("");
+        briefTools.innerHTML = toolItems.map((item) => `<li>${item}</li>`).join("");
+        panelInvestment.textContent = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
+        panelTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
+        panelImpact.textContent = `${impactMin}% – ${impactMax}%`;
+        panelAreas.innerHTML = areaItems
+          .map(
+            (item) =>
+              `<span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/80">${item}</span>`
+          )
           .join("");
-        briefProblems.innerHTML = uniqueList(problems)
-          .slice(0, 6)
-          .map((item) => `<li>${item}</li>`)
+        panelTools.innerHTML = toolItems
+          .map(
+            (item) =>
+              `<span class="rounded-full border border-amarilloCorp/40 bg-amarilloCorp/10 px-3 py-1 text-amarilloCorp">${item}</span>`
+          )
           .join("");
       };
 
-      [...situationInputs, ...objectiveInputs, ...investmentInputs].forEach((input) => {
+      [...situationInputs, ...investmentInputs, ...objectiveInputs].forEach((input) => {
         input.addEventListener("change", updateBriefResult);
       });
       if (soloWebInput) {
