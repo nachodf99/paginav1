@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              azulCorp: "#003366",
+              amarilloCorp: "#FFD700"
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-slate-950 text-white">
+    <main class="min-h-screen">
+      <section class="w-full bg-slate-900">
+        <div class="max-w-5xl mx-auto px-6 py-16 lg:py-24 text-center space-y-4">
+          <p class="text-sm uppercase tracking-[0.4em] text-amarilloCorp">Dominguez Solutions</p>
+          <h1 class="text-4xl sm:text-5xl font-semibold">Contacta con Dominguez Solutions</h1>
+          <p class="text-white/70 text-lg">Elige el canal y te respondemos en menos de 24h</p>
+        </div>
+      </section>
+
+      <section class="max-w-5xl mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <a
+            href="https://wa.me/<%= contact.whatsappNumber %>?text=<%= encodeURIComponent('Hola, quiero una consultoría para mi negocio. ¿Podemos agendar una llamada?') %>"
+            target="_blank"
+            rel="noopener"
+            class="group rounded-2xl border border-amarilloCorp/40 bg-white/5 backdrop-blur-xl p-8 text-left transition hover:border-amarilloCorp"
+          >
+            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-amarilloCorp/20 text-amarilloCorp">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" aria-hidden="true">
+                <path
+                  d="M12 2C6.477 2 2 6.477 2 12a9.96 9.96 0 0 0 1.563 5.375L2 22l4.813-1.5A9.959 9.959 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Zm4.756 13.785c-.204.57-1.193 1.058-1.684 1.102-.462.042-1.053.06-1.698-.105-.39-.1-.885-.29-1.52-.582-2.679-1.174-4.425-3.914-4.563-4.094-.135-.178-1.095-1.46-1.095-2.78 0-1.32.69-1.969.933-2.238.244-.27.532-.337.71-.337.178 0 .355.002.51.01.164.008.384-.062.6.456.22.53.75 1.82.816 1.952.065.132.108.286.02.464-.086.178-.13.286-.258.44-.126.153-.266.342-.38.46-.127.13-.258.27-.11.53.15.265.664 1.096 1.425 1.777.98.875 1.808 1.147 2.073 1.28.266.132.42.11.576-.066.155-.177.665-.773.842-1.037.176-.265.355-.22.6-.132.244.088 1.55.732 1.816.865.266.132.444.197.51.31.066.11.066.637-.138 1.207Z"
+                />
+              </svg>
+            </div>
+            <h2 class="text-xl font-semibold mt-6">WhatsApp</h2>
+            <p class="text-white/70 mt-2">Conversemos en tiempo real sobre tu proyecto.</p>
+          </a>
+
+          <a
+            href="mailto:<%= contact.email %>?subject=<%= encodeURIComponent('Consultoría Dominguez Solutions') %>&body=<%= encodeURIComponent('Hola, quiero una consultoría para mi negocio. Mi nombre es: ...') %>"
+            class="group rounded-2xl border border-amarilloCorp/40 bg-white/5 backdrop-blur-xl p-8 text-left transition hover:border-amarilloCorp"
+          >
+            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-amarilloCorp/20 text-amarilloCorp">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" aria-hidden="true">
+                <path
+                  d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.511l8 4.8 8-4.8V7H4Zm16 10V10.2l-7.485 4.491a1 1 0 0 1-1.03 0L4 10.2V17h16Z"
+                />
+              </svg>
+            </div>
+            <h2 class="text-xl font-semibold mt-6">Email</h2>
+            <p class="text-white/70 mt-2">Envíanos detalles y respondemos con una propuesta.</p>
+          </a>
+
+          <a
+            href="tel:<%= contact.phone.replace(/\s/g,'') %>"
+            class="group rounded-2xl border border-amarilloCorp/40 bg-white/5 backdrop-blur-xl p-8 text-left transition hover:border-amarilloCorp"
+          >
+            <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-amarilloCorp/20 text-amarilloCorp">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" aria-hidden="true">
+                <path
+                  d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.297 21 3 13.703 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.01l-2.2 2.21Z"
+                />
+              </svg>
+            </div>
+            <h2 class="text-xl font-semibold mt-6">Teléfono</h2>
+            <p class="text-white/70 mt-2">Llámanos y te guiamos paso a paso.</p>
+          </a>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/20 text-white/80 hover:text-white hover:border-amarilloCorp transition"
+          >
+            Volver a inicio
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
