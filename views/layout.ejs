@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= meta?.title || "Dominguez Solutions" %></title>
+  <meta name="description" content="<%= meta?.description || "Soluciones profesionales en software, IA y automatización." %>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandYellow: "#FFD400",
+            brandBlue: "#0B1E3B"
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 14px 35px rgba(15, 23, 42, 0.18)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .glass {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-white font-sans">
+  <%- body %>
+  <script>
+    lucide.createIcons();
+
+    const navToggle = document.getElementById("navToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    if (navToggle && mobileMenu) {
+      navToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+
+    const range = document.getElementById("roiRange");
+    const hoursEl = document.getElementById("roiHours");
+    const savingsEl = document.getElementById("roiSavings");
+    const hourlyRate = 20;
+
+    const updateRoi = () => {
+      const weeklyHours = Number(range.value);
+      const monthlyHours = weeklyHours * 4;
+      const savings = monthlyHours * hourlyRate;
+
+      hoursEl.textContent = monthlyHours;
+      savingsEl.textContent = `€${savings.toLocaleString("es-ES")}`;
+    };
+
+    if (range && hoursEl && savingsEl) {
+      range.addEventListener("input", updateRoi);
+      updateRoi();
+    }
+  </script>
+</body>
+</html>
