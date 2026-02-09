@@ -254,6 +254,15 @@
                     </div>
                     <p class="text-xs text-white/60">Ideal para lanzar una web clara y profesional desde cero.</p>
                   </label>
+                  <label
+                    class="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-xs text-white/70"
+                    for="soloWebInput"
+                  >
+                    <input type="checkbox" id="soloWebInput" name="soloWeb" value="solo-web" class="mt-1 accent-amarilloCorp" />
+                    <span>
+                      Solo web (sin automatización/IA): web corporativa, diseño responsive, SEO básico y formulario de contacto.
+                    </span>
+                  </label>
                   <label class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
                     <div class="flex items-start gap-3">
                       <input type="radio" name="investmentLevel" value="crecimiento" class="mt-1 accent-amarilloCorp" />
@@ -262,7 +271,7 @@
                         <p class="text-xs text-white/60">1200–2500€</p>
                       </div>
                     </div>
-                    <p class="text-xs text-white/60">Optimiza captación, contenidos y experiencia de usuario.</p>
+                    <p class="text-xs text-white/60">Optimiza captación, contenidos y automatiza citas.</p>
                   </label>
                   <label class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
                     <div class="flex items-start gap-3">
@@ -272,7 +281,7 @@
                         <p class="text-xs text-white/60">2000–4000€</p>
                       </div>
                     </div>
-                    <p class="text-xs text-white/60">Automatiza flujos clave y mejora la conversión.</p>
+                    <p class="text-xs text-white/60">Añade seguimiento interno y mejora la conversión.</p>
                   </label>
                   <label class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
                     <div class="flex items-start gap-3">
@@ -288,7 +297,7 @@
                         <p class="text-xs text-white/60">1500–5000€</p>
                       </div>
                     </div>
-                    <p class="text-xs text-white/60">Activa automatización avanzada o IA cuando tenga sentido.</p>
+                    <p class="text-xs text-white/60">Activa IA aplicada y automatización avanzada cuando tenga sentido.</p>
                   </label>
                 </div>
               </div>
@@ -323,7 +332,7 @@
             <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/60">
               <p id="briefExample">
                 "Para tu situación, la inversión suele situarse entre 900€ y 1.600€.
-                Incluye web profesional, optimización móvil y sistema de contacto automatizado.
+                Incluye web profesional, optimización móvil y formulario de contacto.
                 Tiempo estimado: 2 a 3 semanas."
               </p>
             </div>
@@ -520,6 +529,10 @@
       const soloWebInput = document.getElementById("soloWebInput");
 
       const briefModel = {
+        soloWeb: {
+          label: "Solo web",
+          includes: ["Web corporativa", "Diseño responsive", "SEO básico", "Formulario de contacto"]
+        },
         situations: {
           "no-web": {
             label: "Sin web",
@@ -560,7 +573,7 @@
             baseInvestment: [700, 1200],
             baseWeeks: [2, 3],
             baseImpact: [8, 16],
-            includes: ["Web profesional", "Optimización móvil", "Formulario de contacto"],
+            includes: ["Web profesional", "Optimización móvil", "Contenido base", "Formulario de contacto"],
             iaIncluded: false
           },
           crecimiento: {
@@ -568,7 +581,7 @@
             baseInvestment: [1200, 2500],
             baseWeeks: [3, 5],
             baseImpact: [12, 22],
-            includes: ["Web profesional", "Optimización móvil", "Contenido estratégico", "CTA de conversión"],
+            includes: ["Todo lo anterior", "Landing de captación", "CTA de conversión", "Automatización de citas"],
             iaIncluded: false
           },
           optimizacion: {
@@ -576,7 +589,7 @@
             baseInvestment: [2000, 4000],
             baseWeeks: [4, 7],
             baseImpact: [18, 30],
-            includes: ["Web profesional avanzada", "Optimización móvil", "Contacto automatizado", "Integraciones clave"],
+            includes: ["Todo lo anterior", "Seguimiento interno", "Integraciones clave", "Reportes mensuales"],
             iaIncluded: false
           }
         },
@@ -586,7 +599,7 @@
           weeks: [2, 4],
           impact: [4, 10],
           areas: ["Soluciones avanzadas", "Experiencias personalizadas"],
-          tools: ["Dashboards inteligentes", "Asistentes digitales"]
+          tools: ["IA aplicada", "Dashboards inteligentes", "Asistentes digitales"]
         },
         objectives: {
           "mas-clientes": {
@@ -654,6 +667,14 @@
           .filter((input) => input.checked)
           .map((input) => input.value);
 
+        if (soloWebInput) {
+          const soloWebEnabled = investmentValue === "presencia-digital";
+          soloWebInput.disabled = !soloWebEnabled;
+          if (!soloWebEnabled) {
+            soloWebInput.checked = false;
+          }
+        }
+
         if (!situationValue || !investmentValue) {
           briefSummary.textContent =
             "Selecciona tu situación actual y nivel de inversión para calcular un estimado consultivo.";
@@ -662,17 +683,18 @@
           briefIncludes.innerHTML = "";
           briefProblems.innerHTML = "";
           briefExample.textContent =
-            '"Para tu situación, la inversión suele situarse entre 900€ y 1.600€. Incluye web profesional, optimización móvil y sistema de contacto automatizado. Tiempo estimado: 2 a 3 semanas."';
+            '"Para tu situación, la inversión suele situarse entre 900€ y 1.600€. Incluye web profesional, optimización móvil y formulario de contacto. Tiempo estimado: 2 a 3 semanas."';
           return;
         }
 
         const situationData = briefModel.situations[situationValue] || briefModel.situations["no-web"];
         const investmentData = briefModel.investmentLevels[investmentValue] || briefModel.investmentLevels["presencia-digital"];
+        const isSoloWeb = Boolean(soloWebInput?.checked && investmentValue === "presencia-digital");
 
         let [investmentMin, investmentMax] = investmentData.baseInvestment;
         let [weeksMin, weeksMax] = investmentData.baseWeeks;
         let [impactMin, impactMax] = investmentData.baseImpact;
-        let includes = [...investmentData.includes];
+        let includes = isSoloWeb ? [...briefModel.soloWeb.includes] : [...investmentData.includes];
         let problems = [];
 
         investmentMin += situationData.investmentBoost[0];
@@ -729,7 +751,8 @@
         }
 
         const investmentText = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
-        briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
+        const soloWebNote = isSoloWeb ? " en modo Solo web (sin automatización/IA)" : "";
+        briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}${soloWebNote}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
         briefInvestment.textContent = investmentText;
         briefTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
 
