@@ -1,184 +1,231 @@
-<!-- Component: App Layout Wrapper -->
-<div class="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brandBlue/60 via-slate-950 to-black">
-  <%- include('partials/header') %>
-
-  <main>
-    <!-- Component: Hero Section -->
-    <section id="inicio" class="min-h-[85vh] max-w-6xl mx-auto px-6 pt-20 pb-16 grid lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-6">
-        <span class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-brandYellow">Solvencia de software</span>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight">Automatizamos tu futuro con Software e Inteligencia Artificial</h1>
-        <p class="text-lg text-white/80">Soluciones a medida: desde tiendas online inteligentes hasta procesos autónomos que ahorran tiempo y dinero.</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#contacto" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brandYellow text-slate-900 font-semibold shadow-soft transition duration-300 hover:scale-105">Solicitar Consultoría</a>
-          <a href="#servicios" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/20 text-white/90 hover:border-brandYellow hover:text-brandYellow transition duration-300 hover:scale-105">Ver Servicios</a>
-        </div>
-      </div>
-      <div class="glass rounded-[2rem] p-8 shadow-soft">
-        <div class="space-y-5">
-          <div class="flex items-center justify-between text-sm text-white/60">
-            <span>Eficiencia operativa</span>
-            <span class="text-brandYellow">92%</span>
-          </div>
-          <div class="h-2 rounded-full bg-white/10">
-            <div class="h-2 rounded-full bg-brandYellow w-[92%]"></div>
-          </div>
-          <div class="flex items-center justify-between text-sm text-white/60">
-            <span>Automatización</span>
-            <span class="text-brandYellow">+64%</span>
-          </div>
-          <div class="h-2 rounded-full bg-white/10">
-            <div class="h-2 rounded-full bg-brandYellow w-[64%]"></div>
-          </div>
-          <div class="rounded-xl border border-white/10 bg-white/10 p-4">
-            <p class="text-sm text-white/70">"Nuestra operación se duplicó sin aumentar el equipo gracias a Dominguez Solutions."</p>
-            <p class="text-xs text-white/50 mt-3">— Dirección de operaciones</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Component: Services -->
-    <section id="servicios" class="max-w-6xl mx-auto px-6 py-16">
-      <div class="text-center space-y-4 mb-12">
-        <h2 class="text-3xl sm:text-4xl font-semibold">Servicios estratégicos</h2>
-        <p class="text-white/70">Soluciones digitales que impulsan ventas, eficiencia y crecimiento.</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <article class="glass rounded-2xl p-6 shadow-soft transition duration-300 hover:scale-105">
-          <div class="w-12 h-12 rounded-xl bg-brandYellow/20 text-brandYellow flex items-center justify-center mb-4">
-            <i data-lucide="shopping-bag"></i>
-          </div>
-          <h3 class="font-semibold text-lg">Web & Ecommerce</h3>
-          <p class="text-white/70 text-sm mt-2">Diseño de alta conversión y tiendas online escalables.</p>
-        </article>
-        <article class="glass rounded-2xl p-6 shadow-soft transition duration-300 hover:scale-105">
-          <div class="w-12 h-12 rounded-xl bg-brandYellow/20 text-brandYellow flex items-center justify-center mb-4">
-            <i data-lucide="calendar-clock"></i>
-          </div>
-          <h3 class="font-semibold text-lg">Reservas Online</h3>
-          <p class="text-white/70 text-sm mt-2">Agenda automática con recordatorios y pagos integrados.</p>
-        </article>
-        <article class="glass rounded-2xl p-6 shadow-soft transition duration-300 hover:scale-105">
-          <div class="w-12 h-12 rounded-xl bg-brandYellow/20 text-brandYellow flex items-center justify-center mb-4">
-            <i data-lucide="workflow"></i>
-          </div>
-          <h3 class="font-semibold text-lg">Automatización</h3>
-          <p class="text-white/70 text-sm mt-2">Conectamos apps para eliminar tareas manuales.</p>
-        </article>
-        <article class="glass rounded-2xl p-6 shadow-soft transition duration-300 hover:scale-105">
-          <div class="w-12 h-12 rounded-xl bg-brandYellow/20 text-brandYellow flex items-center justify-center mb-4">
-            <i data-lucide="bot"></i>
-          </div>
-          <h3 class="font-semibold text-lg">Soluciones IA</h3>
-          <p class="text-white/70 text-sm mt-2">Chatbots y asistentes inteligentes con CRM.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Component: Roadmap -->
-    <section id="proceso" class="max-w-6xl mx-auto px-6 py-16">
-      <div class="text-center space-y-4 mb-12">
-        <h2 class="text-3xl sm:text-4xl font-semibold">Roadmap de proceso</h2>
-        <p class="text-white/70">Implementación clara y transparente en 4 fases.</p>
-      </div>
-      <div class="grid md:grid-cols-4 gap-6">
-        <article class="glass rounded-2xl p-6 text-center">
-          <div class="mx-auto w-12 h-12 rounded-full bg-brandYellow/20 text-brandYellow flex items-center justify-center mb-4">
-            <i data-lucide="search"></i>
-          </div>
-          <h3 class="font-semibold">Auditoría</h3>
-          <p class="text-white/70 text-sm mt-2">Diagnóstico de flujos de trabajo.</p>
-        </article>
-        <article class="glass rounded-2xl p-6 text-center">
-          <div class="mx-auto w-12 h-12 rounded-full bg-brandYellow/20 text-brandYellow flex items-center justify-center mb-4">
-            <i data-lucide="pen-tool"></i>
-          </div>
-          <h3 class="font-semibold">Diseño</h3>
-          <p class="text-white/70 text-sm mt-2">Arquitectura de software e IA.</p>
-        </article>
-        <article class="glass rounded-2xl p-6 text-center">
-          <div class="mx-auto w-12 h-12 rounded-full bg-brandYellow/20 text-brandYellow flex items-center justify-center mb-4">
-            <i data-lucide="cpu"></i>
-          </div>
-          <h3 class="font-semibold">Despliegue</h3>
-          <p class="text-white/70 text-sm mt-2">Integración segura sin fricciones.</p>
-        </article>
-        <article class="glass rounded-2xl p-6 text-center">
-          <div class="mx-auto w-12 h-12 rounded-full bg-brandYellow/20 text-brandYellow flex items-center justify-center mb-4">
-            <i data-lucide="shield-check"></i>
-          </div>
-          <h3 class="font-semibold">Soporte</h3>
-          <p class="text-white/70 text-sm mt-2">Optimización continua 24/7.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Component: ROI Calculator -->
-    <section class="max-w-6xl mx-auto px-6 py-16">
-      <div class="glass rounded-[2rem] p-8 shadow-soft">
-        <div class="flex flex-col lg:flex-row gap-10 items-center">
-          <div class="space-y-4">
-            <h2 class="text-3xl sm:text-4xl font-semibold">Calculadora de ROI</h2>
-            <p class="text-white/70">¿Cuántas horas ahorras al automatizar procesos?</p>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dominguez Solutions | Automatización e IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              azulCorp: "#003366",
+              amarilloCorp: "#FFD700"
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+  <body class="font-sans bg-slate-950 text-white">
+    <main>
+      <section class="w-full bg-slate-900">
+        <div class="max-w-6xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12">
+          <div class="flex-1 space-y-6">
+            <p class="text-sm uppercase tracking-[0.4em] text-amarilloCorp">Dominguez Solutions</p>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold">
+              Tecnología e IA para acelerar tu operación con precisión y estilo.
+            </h1>
+            <p class="text-lg text-white/70">
+              Transformamos procesos manuales en sistemas inteligentes y escalables. Resultados rápidos, datos claros y una
+              experiencia digital impecable.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a
+                href="/contacto"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amarilloCorp text-slate-900 font-semibold shadow-lg hover:shadow-xl transition"
+              >
+                Solicitar consultoría
+              </a>
+              <a
+                href="#proceso"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/20 text-white/80 hover:text-white hover:border-amarilloCorp transition"
+              >
+                Ver proceso
+              </a>
+            </div>
           </div>
           <div class="flex-1 w-full">
-            <label class="text-sm text-white/70" for="roiRange">Horas ahorradas por semana</label>
-            <input id="roiRange" type="range" min="5" max="80" value="30" class="mt-3 w-full accent-brandYellow" />
-            <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-              <div class="rounded-2xl border border-white/10 bg-white/10 p-4">
-                <p class="text-xs text-white/60">Horas mensuales</p>
-                <p class="text-2xl font-semibold" id="roiHours">120</p>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/10 p-4">
-                <p class="text-xs text-white/60">Valor hora</p>
-                <p class="text-2xl font-semibold">€20</p>
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-brandYellow text-slate-900 p-4">
-                <p class="text-xs font-semibold">Ahorro estimado</p>
-                <p class="text-2xl font-bold" id="roiSavings">€2.400</p>
+            <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
+              <div class="space-y-6">
+                <div>
+                  <p class="text-sm text-white/60">Eficiencia operacional</p>
+                  <p class="text-3xl font-semibold text-amarilloCorp">+72%</p>
+                </div>
+                <div>
+                  <p class="text-sm text-white/60">Procesos automatizados</p>
+                  <p class="text-3xl font-semibold text-amarilloCorp">+58%</p>
+                </div>
+                <div class="border-t border-white/10 pt-6 text-white/70">
+                  "Integramos IA en menos de 30 días y duplicamos la capacidad del equipo sin contratar más personal."
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Component: Contact -->
-    <section id="contacto" class="max-w-6xl mx-auto px-6 pb-24">
-      <div class="grid lg:grid-cols-2 gap-10">
-        <div class="space-y-4">
-          <h2 class="text-3xl sm:text-4xl font-semibold">Hablemos de tu proyecto</h2>
-          <p class="text-white/70">Cuéntanos tus objetivos y diseñaremos una propuesta personalizada.</p>
-          <div class="space-y-3 text-white/70">
-            <p><strong class="text-white">Email:</strong> contacto@dominguezsolutions.com</p>
-            <p><strong class="text-white">Teléfono:</strong> +34 600 000 000</p>
-            <p><strong class="text-white">Ubicación:</strong> Madrid · Remoto</p>
+      <section id="servicios" class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center space-y-4 mb-12">
+          <h2 class="text-3xl sm:text-4xl font-semibold">Servicios estratégicos</h2>
+          <p class="text-white/70">Soluciones modernas para vender más, operar mejor y crecer con datos.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article class="rounded-2xl border border-amarilloCorp/30 bg-white/5 backdrop-blur-xl p-6">
+            <h3 class="text-lg font-semibold">Ecommerce inteligente</h3>
+            <p class="text-white/70 text-sm mt-2">Tiendas optimizadas con analítica predictiva y automatización.</p>
+          </article>
+          <article class="rounded-2xl border border-amarilloCorp/30 bg-white/5 backdrop-blur-xl p-6">
+            <h3 class="text-lg font-semibold">Automatización de procesos</h3>
+            <p class="text-white/70 text-sm mt-2">Workflows que eliminan tareas repetitivas y errores humanos.</p>
+          </article>
+          <article class="rounded-2xl border border-amarilloCorp/30 bg-white/5 backdrop-blur-xl p-6">
+            <h3 class="text-lg font-semibold">Asistentes IA</h3>
+            <p class="text-white/70 text-sm mt-2">Bots entrenados con tu data para atención inmediata y ventas.</p>
+          </article>
+          <article class="rounded-2xl border border-amarilloCorp/30 bg-white/5 backdrop-blur-xl p-6">
+            <h3 class="text-lg font-semibold">Integraciones & APIs</h3>
+            <p class="text-white/70 text-sm mt-2">Conectamos tus sistemas en un ecosistema sólido y escalable.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="proceso" class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center space-y-4 mb-12">
+          <h2 class="text-3xl sm:text-4xl font-semibold">Proceso claro y controlado</h2>
+          <p class="text-white/70">Un roadmap transparente que te mantiene informado en cada fase.</p>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-6">
+          <div class="flex-1 rounded-2xl border border-white/10 bg-slate-900/60 p-6">
+            <p class="text-amarilloCorp text-sm uppercase tracking-[0.2em]">01 Diagnóstico</p>
+            <h3 class="text-xl font-semibold mt-3">Mapa de oportunidades</h3>
+            <p class="text-white/70 text-sm mt-3">Auditamos procesos, datos y objetivos para definir prioridades.</p>
+          </div>
+          <div class="flex-1 rounded-2xl border border-white/10 bg-slate-900/60 p-6">
+            <p class="text-amarilloCorp text-sm uppercase tracking-[0.2em]">02 Diseño</p>
+            <h3 class="text-xl font-semibold mt-3">Arquitectura inteligente</h3>
+            <p class="text-white/70 text-sm mt-3">Creamos soluciones escalables con enfoque en UX y seguridad.</p>
+          </div>
+          <div class="flex-1 rounded-2xl border border-white/10 bg-slate-900/60 p-6">
+            <p class="text-amarilloCorp text-sm uppercase tracking-[0.2em]">03 Implementación</p>
+            <h3 class="text-xl font-semibold mt-3">Despliegue ágil</h3>
+            <p class="text-white/70 text-sm mt-3">Integramos IA y automatización con mínima fricción.</p>
+          </div>
+          <div class="flex-1 rounded-2xl border border-white/10 bg-slate-900/60 p-6">
+            <p class="text-amarilloCorp text-sm uppercase tracking-[0.2em]">04 Optimización</p>
+            <h3 class="text-xl font-semibold mt-3">Mejora continua</h3>
+            <p class="text-white/70 text-sm mt-3">Analizamos métricas y ajustamos para maximizar ROI.</p>
           </div>
         </div>
-        <form class="glass rounded-2xl p-8 shadow-soft" method="post" action="/contacto">
-          <div class="grid gap-4">
-            <div>
-              <label class="text-sm text-white/70" for="nombre">Nombre</label>
-              <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre" class="mt-2 w-full rounded-lg bg-slate-950/60 border border-white/10 px-4 py-2 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brandYellow" />
-            </div>
-            <div>
-              <label class="text-sm text-white/70" for="email">Email</label>
-              <input id="email" name="email" type="email" required placeholder="nombre@empresa.com" class="mt-2 w-full rounded-lg bg-slate-950/60 border border-white/10 px-4 py-2 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brandYellow" />
-            </div>
-            <div>
-              <label class="text-sm text-white/70" for="mensaje">Mensaje</label>
-              <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos sobre tu proyecto" class="mt-2 w-full rounded-lg bg-slate-950/60 border border-white/10 px-4 py-2 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brandYellow"></textarea>
-            </div>
-            <button type="submit" class="w-full rounded-full bg-brandYellow text-slate-900 font-semibold py-3 shadow-soft transition duration-300 hover:scale-105">Enviar solicitud</button>
-            <% if (typeof success !== 'undefined' && success) { %>
-              <p class="text-sm text-brandYellow">¡Gracias! Te contactaremos pronto.</p>
-            <% } %>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <%- include('partials/footer') %>
-</div>
+      <section class="max-w-6xl mx-auto px-6 pb-20">
+        <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 lg:p-12">
+          <div class="flex flex-col lg:flex-row gap-10">
+            <div class="flex-1 space-y-4">
+              <h2 class="text-3xl sm:text-4xl font-semibold">Calculadora de ROI</h2>
+              <p class="text-white/70">
+                Ajusta los rangos para visualizar el ahorro mensual estimado al automatizar con IA.
+              </p>
+              <div class="flex items-center gap-4">
+                <span class="text-sm text-white/60">Ahorro estimado:</span>
+                <span id="roiTotal" class="text-2xl font-semibold text-amarilloCorp">€0</span>
+              </div>
+            </div>
+            <div class="flex-1 space-y-6">
+              <div>
+                <label for="hoursRange" class="text-sm text-white/70">Horas ahorradas por semana</label>
+                <input
+                  id="hoursRange"
+                  type="range"
+                  min="5"
+                  max="80"
+                  value="30"
+                  class="mt-3 w-full accent-amarilloCorp"
+                />
+                <div class="mt-2 flex justify-between text-xs text-white/50">
+                  <span>5h</span>
+                  <span id="hoursValue">30h</span>
+                  <span>80h</span>
+                </div>
+              </div>
+              <div>
+                <label for="rateRange" class="text-sm text-white/70">Valor promedio por hora</label>
+                <input
+                  id="rateRange"
+                  type="range"
+                  min="10"
+                  max="120"
+                  value="25"
+                  class="mt-3 w-full accent-amarilloCorp"
+                />
+                <div class="mt-2 flex justify-between text-xs text-white/50">
+                  <span>€10</span>
+                  <span id="rateValue">€25</span>
+                  <span>€120</span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                  <p class="text-xs text-white/60">Horas mensuales</p>
+                  <p id="monthlyHours" class="text-2xl font-semibold">120</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                  <p class="text-xs text-white/60">Ahorro mensual</p>
+                  <p id="monthlySavings" class="text-2xl font-semibold">€3.000</p>
+                </div>
+                <div class="rounded-2xl border border-amarilloCorp/50 bg-amarilloCorp text-slate-900 p-4">
+                  <p class="text-xs font-semibold">ROI anual</p>
+                  <p id="annualSavings" class="text-2xl font-bold">€36.000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const hoursRange = document.getElementById("hoursRange");
+      const rateRange = document.getElementById("rateRange");
+      const hoursValue = document.getElementById("hoursValue");
+      const rateValue = document.getElementById("rateValue");
+      const monthlyHours = document.getElementById("monthlyHours");
+      const monthlySavings = document.getElementById("monthlySavings");
+      const annualSavings = document.getElementById("annualSavings");
+      const roiTotal = document.getElementById("roiTotal");
+
+      const formatCurrency = (value) =>
+        new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
+
+      const updateROI = () => {
+        const hours = Number(hoursRange.value);
+        const rate = Number(rateRange.value);
+        const totalMonthlyHours = hours * 4;
+        const totalMonthlySavings = totalMonthlyHours * rate;
+        const totalAnnualSavings = totalMonthlySavings * 12;
+
+        hoursValue.textContent = `${hours}h`;
+        rateValue.textContent = formatCurrency(rate);
+        monthlyHours.textContent = totalMonthlyHours;
+        monthlySavings.textContent = formatCurrency(totalMonthlySavings);
+        annualSavings.textContent = formatCurrency(totalAnnualSavings);
+        roiTotal.textContent = formatCurrency(totalMonthlySavings);
+      };
+
+      hoursRange.addEventListener("input", updateROI);
+      rateRange.addEventListener("input", updateROI);
+      updateROI();
+    </script>
+  </body>
+</html>

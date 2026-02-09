@@ -2,30 +2,25 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index", {
-    meta: {
-      title: "Dominguez Solutions | Software, IA y Automatización",
-      description: "Soluciones profesionales en software, IA y automatización para empresas que buscan eficiencia, solvencia y crecimiento digital."
-    }
-  });
+  res.render("index");
 });
 
-app.post("/contacto", (req, res) => {
-  res.status(200).render("index", {
-    meta: {
-      title: "Dominguez Solutions | Software, IA y Automatización",
-      description: "Soluciones profesionales en software, IA y automatización para empresas que buscan eficiencia, solvencia y crecimiento digital."
-    },
-    success: true
+app.get("/contacto", (req, res) => {
+  res.render("contacto", {
+    title: "Contacto | Dominguez Solutions",
+    contact: {
+      whatsappNumber: "34600000000",
+      email: "contacto@dominguezsolutions.com",
+      phone: "+34600000000"
+    }
   });
 });
 
