@@ -17,7 +17,9 @@
           extend: {
             colors: {
               azulCorp: "#003366",
-              amarilloCorp: "#FFD700"
+              amarilloCorp: "#FFD700",
+              brandYellow: "#FFD400",
+              brandBlue: "#0B1E3B"
             },
             fontFamily: {
               sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
@@ -28,8 +30,9 @@
     </script>
   </head>
   <body class="font-sans bg-slate-950 text-white">
+    <%- include('partials/header') %>
     <main>
-      <section class="w-full bg-slate-900">
+      <section id="inicio" class="w-full bg-slate-900">
         <div class="max-w-6xl mx-auto px-6 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-12">
           <div class="flex-1 space-y-6">
             <p class="text-sm uppercase tracking-[0.4em] text-amarilloCorp">Dominguez Solutions</p>
@@ -234,8 +237,18 @@
         </div>
       </section>
     </main>
+    <%- include('partials/footer') %>
 
     <script>
+      const navToggle = document.getElementById("navToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      if (navToggle && mobileMenu) {
+        navToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
       const hoursRange = document.getElementById("hoursRange");
       const rateRange = document.getElementById("rateRange");
       const hoursValue = document.getElementById("hoursValue");
