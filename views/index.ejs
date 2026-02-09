@@ -291,6 +291,44 @@
                   </div>
                 </div>
               </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.35em] text-amarilloCorp">Panel final</p>
+                    <h3 class="text-lg font-semibold">Resumen premium del diagnóstico</h3>
+                    <p class="text-sm text-white/60 mt-1">
+                      Visualiza el alcance estimado con métricas clave para decidir el siguiente paso.
+                    </p>
+                  </div>
+                  <span class="inline-flex items-center gap-2 rounded-full border border-amarilloCorp/50 bg-amarilloCorp/10 px-4 py-2 text-xs font-semibold text-amarilloCorp">
+                    Diagnóstico inteligente
+                  </span>
+                </div>
+                <div class="mt-6 grid gap-4 sm:grid-cols-3">
+                  <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                    <p class="text-xs text-white/50">Rango de inversión estimada</p>
+                    <p id="panelInvestment" class="text-lg font-semibold text-white">-</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                    <p class="text-xs text-white/50">Tiempo aproximado de despliegue</p>
+                    <p id="panelTimeline" class="text-lg font-semibold text-white">-</p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 bg-slate-900/60 p-4">
+                    <p class="text-xs text-white/50">Nivel de impacto operativo</p>
+                    <p id="panelImpact" class="text-lg font-semibold text-white">-</p>
+                  </div>
+                </div>
+                <div class="mt-6 grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-white/40">Áreas del negocio que mejorarán</p>
+                    <div id="panelAreas" class="mt-3 flex flex-wrap gap-2 text-xs"></div>
+                  </div>
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-white/40">Tipo de herramientas a implementar</p>
+                    <div id="panelTools" class="mt-3 flex flex-wrap gap-2 text-xs"></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -478,6 +516,11 @@
       const briefImpact = document.getElementById("briefImpact");
       const briefAreas = document.getElementById("briefAreas");
       const briefTools = document.getElementById("briefTools");
+      const panelInvestment = document.getElementById("panelInvestment");
+      const panelTimeline = document.getElementById("panelTimeline");
+      const panelImpact = document.getElementById("panelImpact");
+      const panelAreas = document.getElementById("panelAreas");
+      const panelTools = document.getElementById("panelTools");
       const companyInputs = document.querySelectorAll('input[name="companyType"]');
       const ambitionInputs = document.querySelectorAll('input[name="ambition"]');
       const painInputs = document.querySelectorAll(".pain-point");
@@ -611,7 +654,20 @@
         `${minValue}${suffix} – ${maxValue}${suffix}`;
 
       const updateBriefResult = () => {
-        if (!briefSummary || !briefInvestment || !briefTimeline || !briefImpact || !briefAreas || !briefTools) return;
+        if (
+          !briefSummary ||
+          !briefInvestment ||
+          !briefTimeline ||
+          !briefImpact ||
+          !briefAreas ||
+          !briefTools ||
+          !panelInvestment ||
+          !panelTimeline ||
+          !panelImpact ||
+          !panelAreas ||
+          !panelTools
+        )
+          return;
 
         const companyValue = document.querySelector('input[name="companyType"]:checked')?.value;
         const ambitionValue = document.querySelector('input[name="ambition"]:checked')?.value;
@@ -627,6 +683,11 @@
           briefImpact.textContent = "-";
           briefAreas.innerHTML = "";
           briefTools.innerHTML = "";
+          panelInvestment.textContent = "-";
+          panelTimeline.textContent = "-";
+          panelImpact.textContent = "-";
+          panelAreas.innerHTML = "";
+          panelTools.innerHTML = "";
           return;
         }
 
@@ -677,6 +738,21 @@
         const toolItems = uniqueList(tools).slice(0, 4);
         briefAreas.innerHTML = areaItems.map((item) => `<li>${item}</li>`).join("");
         briefTools.innerHTML = toolItems.map((item) => `<li>${item}</li>`).join("");
+        panelInvestment.textContent = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
+        panelTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
+        panelImpact.textContent = `${impactMin}% – ${impactMax}%`;
+        panelAreas.innerHTML = areaItems
+          .map(
+            (item) =>
+              `<span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-white/80">${item}</span>`
+          )
+          .join("");
+        panelTools.innerHTML = toolItems
+          .map(
+            (item) =>
+              `<span class="rounded-full border border-amarilloCorp/40 bg-amarilloCorp/10 px-3 py-1 text-amarilloCorp">${item}</span>`
+          )
+          .join("");
       };
 
       [...companyInputs, ...ambitionInputs, ...painInputs].forEach((input) => {
