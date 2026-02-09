@@ -210,15 +210,15 @@
                 <div class="grid gap-3">
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                     <input type="checkbox" value="mas-clientes" class="objective-input accent-amarilloCorp" />
-                    Más clientes
+                    Conseguir más clientes
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                     <input type="checkbox" value="mostrar-negocio" class="objective-input accent-amarilloCorp" />
-                    Mostrar negocio
+                    Mostrar mejor mi negocio
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                     <input type="checkbox" value="reservas-citas" class="objective-input accent-amarilloCorp" />
-                    Reservas / citas
+                    Permitir reservas o citas
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                     <input type="checkbox" value="vender-productos" class="objective-input accent-amarilloCorp" />
@@ -234,7 +234,7 @@
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                     <input type="checkbox" value="ia-futuro" class="objective-input accent-amarilloCorp" />
-                    Integrar IA más adelante
+                    Más adelante integrar IA
                   </label>
                 </div>
               </div>
@@ -276,13 +276,19 @@
                   </label>
                   <label class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
                     <div class="flex items-start gap-3">
-                      <input type="radio" name="investmentLevel" value="innovacion" class="mt-1 accent-amarilloCorp" />
+                      <input
+                        type="checkbox"
+                        id="innovationToggle"
+                        name="innovationAddon"
+                        value="innovacion"
+                        class="mt-1 accent-amarilloCorp"
+                      />
                       <div>
                         <p class="font-semibold text-white">Innovación (opcional)</p>
-                        <p class="text-xs text-white/60">3000–6000€</p>
+                        <p class="text-xs text-white/60">1500–5000€</p>
                       </div>
                     </div>
-                    <p class="text-xs text-white/60">Incluye IA solo si quieres activarla en esta fase.</p>
+                    <p class="text-xs text-white/60">Activa automatización avanzada o IA cuando tenga sentido.</p>
                   </label>
                 </div>
               </div>
@@ -497,6 +503,8 @@
       const situationInputs = document.querySelectorAll('input[name="currentSituation"]');
       const investmentInputs = document.querySelectorAll('input[name="investmentLevel"]');
       const objectiveInputs = document.querySelectorAll(".objective-input");
+      const innovationToggle = document.getElementById("innovationToggle");
+      const soloWebInput = document.getElementById("soloWebInput");
 
       const briefModel = {
         situations: {
@@ -560,16 +568,15 @@
             areas: ["Conversión y automatización", "Procesos digitales"],
             tools: ["Automatizaciones web", "Integraciones"],
             iaIncluded: false
-          },
-          innovacion: {
-            label: "Innovación",
-            baseInvestment: [3000, 6000],
-            baseWeeks: [5, 8],
-            baseImpact: [22, 36],
-            areas: ["Soluciones avanzadas", "Experiencias personalizadas"],
-            tools: ["Dashboards inteligentes", "Asistentes digitales"],
-            iaIncluded: true
           }
+        },
+        innovationAddon: {
+          label: "Innovación (opcional)",
+          range: [1500, 5000],
+          weeks: [2, 4],
+          impact: [4, 10],
+          areas: ["Soluciones avanzadas", "Experiencias personalizadas"],
+          tools: ["Dashboards inteligentes", "Asistentes digitales"]
         },
         objectives: {
           "mas-clientes": {
@@ -644,6 +651,7 @@
 
         const situationValue = document.querySelector('input[name="currentSituation"]:checked')?.value;
         const investmentValue = document.querySelector('input[name="investmentLevel"]:checked')?.value;
+        const innovationSelected = innovationToggle?.checked;
         const selectedObjectives = Array.from(objectiveInputs)
           .filter((input) => input.checked)
           .map((input) => input.value);
@@ -667,7 +675,7 @@
         const situationData = briefModel.situations[situationValue] || briefModel.situations["no-web"];
         const investmentData = briefModel.investmentLevels[investmentValue] || briefModel.investmentLevels["presencia-digital"];
         const objectiveCount = selectedObjectives.length;
-        const iaActive = investmentData.iaIncluded || selectedObjectives.includes("ia-futuro");
+        const iaActive = investmentData.iaIncluded || selectedObjectives.includes("ia-futuro") || innovationSelected;
 
         let [investmentMin, investmentMax] = investmentData.baseInvestment;
         let [weeksMin, weeksMax] = investmentData.baseWeeks;
@@ -716,17 +724,20 @@
         impactMax = Math.min(Math.round(impactMax), 80);
 
         if (innovationSelected) {
-          const innovationData = estimatorModel.innovation;
-          minInvestment += innovationData.range[0];
-          maxInvestment += innovationData.range[1];
-          minWeeks += innovationData.weeks[0];
-          maxWeeks += innovationData.weeks[1];
-          includes = includes.concat(innovationData.includes);
-          problems = problems.concat(["Necesitas innovación avanzada"]);
+          const innovationData = briefModel.innovationAddon;
+          investmentMin += innovationData.range[0];
+          investmentMax += innovationData.range[1];
+          weeksMin += innovationData.weeks[0];
+          weeksMax += innovationData.weeks[1];
+          impactMin += innovationData.impact[0];
+          impactMax += innovationData.impact[1];
+          areas = areas.concat(innovationData.areas);
+          tools = tools.concat(innovationData.tools);
         }
 
+        const investmentText = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
         briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
-        briefInvestment.textContent = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
+        briefInvestment.textContent = investmentText;
         briefTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
         briefImpact.textContent = `${impactMin}% – ${impactMax}%`;
 
