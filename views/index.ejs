@@ -207,31 +207,31 @@
                 <p class="text-xs text-white/60">Paso 2 · Objetivos</p>
                 <div class="grid gap-3">
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="mas-clientes" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="mas-clientes" class="objective-input accent-amarilloCorp" />
                     Más clientes
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="mostrar-negocio" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="mostrar-negocio" class="objective-input accent-amarilloCorp" />
                     Mostrar negocio
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="reservas-citas" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="reservas-citas" class="objective-input accent-amarilloCorp" />
                     Reservas / citas
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="vender-productos" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="vender-productos" class="objective-input accent-amarilloCorp" />
                     Vender productos
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="reducir-llamadas" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="reducir-llamadas" class="objective-input accent-amarilloCorp" />
                     Reducir llamadas
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="automatizar-repetitivas" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="automatizar-repetitivas" class="objective-input accent-amarilloCorp" />
                     Automatizar tareas repetitivas
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="ia-futuro" class="accent-amarilloCorp" />
+                    <input type="checkbox" value="ia-futuro" class="objective-input accent-amarilloCorp" />
                     Integrar IA más adelante
                   </label>
                 </div>
@@ -277,7 +277,7 @@
                       <input type="radio" name="investmentLevel" value="innovacion" class="mt-1 accent-amarilloCorp" />
                       <div>
                         <p class="font-semibold text-white">Innovación (opcional)</p>
-                        <p class="text-xs text-white/60">1500–5000€</p>
+                        <p class="text-xs text-white/60">3000–6000€</p>
                       </div>
                     </div>
                     <p class="text-xs text-white/60">Incluye IA solo si quieres activarla en esta fase.</p>
@@ -476,130 +476,132 @@
       const panelImpact = document.getElementById("panelImpact");
       const panelAreas = document.getElementById("panelAreas");
       const panelTools = document.getElementById("panelTools");
-      const companyInputs = document.querySelectorAll('input[name="companyType"]');
-      const ambitionInputs = document.querySelectorAll('input[name="ambition"]');
-      const painInputs = document.querySelectorAll(".pain-point");
+      const situationInputs = document.querySelectorAll('input[name="currentSituation"]');
+      const investmentInputs = document.querySelectorAll('input[name="investmentLevel"]');
+      const objectiveInputs = document.querySelectorAll(".objective-input");
 
       const briefModel = {
-        companyTypes: {
-          restaurante: {
-            label: "Restaurante / hostelería",
-            baseInvestment: [3500, 6000],
-            baseWeeks: [3, 5],
-            baseImpact: [28, 42],
-            areas: ["Reservas y turnos", "Atención fuera de horario", "Gestión de sala"],
-            tools: ["Motor de reservas", "WhatsApp Business", "Dashboard operativo"]
+        situations: {
+          "no-web": {
+            label: "Sin web",
+            investmentBoost: [0, 150],
+            weeksBoost: [0.5, 1],
+            impactBoost: [2, 5],
+            areas: ["Lanzamiento web"],
+            tools: ["Arquitectura básica"]
           },
-          taller: {
-            label: "Taller o concesionario",
-            baseInvestment: [4200, 7200],
-            baseWeeks: [4, 6],
-            baseImpact: [25, 38],
-            areas: ["Gestión de citas", "Seguimiento de clientes", "Inventario y repuestos"],
-            tools: ["CRM postventa", "Agenda automatizada", "Notificaciones SMS"]
-          },
-          clinica: {
-            label: "Clínica / estética / salud",
-            baseInvestment: [4800, 8200],
-            baseWeeks: [4, 7],
-            baseImpact: [30, 45],
-            areas: ["Agenda y recordatorios", "Experiencia del paciente", "Gestión administrativa"],
-            tools: ["Historial digital", "Confirmaciones automáticas", "Portal paciente"]
-          },
-          retail: {
-            label: "Retail / comercio",
-            baseInvestment: [3600, 6400],
-            baseWeeks: [3, 5],
-            baseImpact: [22, 36],
-            areas: ["Ventas online", "Gestión de stock", "Fidelización"],
-            tools: ["Ecommerce integrado", "Email automation", "Analítica de ventas"]
-          },
-          servicios: {
-            label: "Servicios profesionales",
-            baseInvestment: [4000, 7000],
-            baseWeeks: [4, 6],
-            baseImpact: [26, 40],
-            areas: ["Pipeline comercial", "Entrega de proyectos", "Facturación"],
-            tools: ["CRM y automatizaciones", "Gestión documental", "Dashboards KPI"]
-          },
-          otro: {
-            label: "Empresa multiproceso",
-            baseInvestment: [3800, 6800],
-            baseWeeks: [4, 6],
-            baseImpact: [24, 38],
-            areas: ["Operaciones internas", "Atención al cliente", "Control de datos"],
-            tools: ["Workflow centralizado", "Automatización de reportes", "Integraciones API"]
-          }
-        },
-        pains: {
-          telefono: {
-            investmentBoost: [250, 400],
-            weeksBoost: [0.2, 0.4],
-            impactBoost: [3, 5],
-            areas: ["Atención omnicanal"],
-            tools: ["Telefonía cloud"]
-          },
-          "fuera-horario": {
-            investmentBoost: [300, 500],
-            weeksBoost: [0.3, 0.5],
-            impactBoost: [4, 6],
-            areas: ["Captura 24/7"],
-            tools: ["Chatbot y captación"]
-          },
-          manual: {
-            investmentBoost: [350, 600],
-            weeksBoost: [0.4, 0.7],
-            impactBoost: [5, 8],
-            areas: ["Automatización operativa"],
-            tools: ["RPA ligero"]
-          },
-          datos: {
-            investmentBoost: [200, 350],
-            weeksBoost: [0.2, 0.4],
-            impactBoost: [2, 4],
-            areas: ["Analítica y reporting"],
-            tools: ["BI dashboards"]
-          },
-          seguimiento: {
-            investmentBoost: [280, 450],
-            weeksBoost: [0.3, 0.5],
+          "web-mejora": {
+            label: "Web a optimizar",
+            investmentBoost: [150, 300],
+            weeksBoost: [0.5, 1.5],
             impactBoost: [3, 6],
-            areas: ["Customer success"],
-            tools: ["Secuencias CRM"]
+            areas: ["Optimización UX/UI"],
+            tools: ["Auditoría de contenidos"]
           },
-          "ventas-online": {
-            investmentBoost: [320, 520],
-            weeksBoost: [0.4, 0.6],
-            impactBoost: [4, 7],
-            areas: ["Canal digital"],
-            tools: ["Checkout optimizado"]
+          "vender-online": {
+            label: "Venta online",
+            investmentBoost: [250, 500],
+            weeksBoost: [1, 2],
+            impactBoost: [4, 8],
+            areas: ["Comercio digital"],
+            tools: ["Checkout y pagos"]
           },
-          automatizar: {
-            investmentBoost: [380, 650],
-            weeksBoost: [0.5, 0.8],
-            impactBoost: [6, 9],
-            areas: ["Automatización transversal"],
-            tools: ["Integraciones clave"]
+          "automatizar-tareas": {
+            label: "Automatización inicial",
+            investmentBoost: [300, 600],
+            weeksBoost: [1, 2.5],
+            impactBoost: [6, 10],
+            areas: ["Procesos internos"],
+            tools: ["Flujos automáticos"]
           }
         },
-        ambitions: {
-          basic: {
-            label: "Optimizar lo básico",
-            investmentMultiplier: 1,
-            weeksAdd: [0, 1],
-            impactAdd: [0, 4]
+        investmentLevels: {
+          "presencia-digital": {
+            label: "Presencia digital",
+            baseInvestment: [700, 1200],
+            baseWeeks: [2, 4],
+            baseImpact: [8, 16],
+            areas: ["Web corporativa", "Identidad visual"],
+            tools: ["Diseño web", "SEO básico"],
+            iaIncluded: false
           },
-          scale: {
-            label: "Escalar operaciones",
-            investmentMultiplier: 1.25,
-            weeksAdd: [1, 2],
-            impactAdd: [5, 10]
+          crecimiento: {
+            label: "Crecimiento",
+            baseInvestment: [1200, 2500],
+            baseWeeks: [3, 5],
+            baseImpact: [12, 22],
+            areas: ["Captación de clientes", "Contenido estratégico"],
+            tools: ["Landing optimizadas", "Analítica web"],
+            iaIncluded: false
           },
-          transform: {
-            label: "Transformación digital completa con IA",
-            investmentMultiplier: 1.6,
-            weeksAdd: [2, 4],
-            impactAdd: [10, 18]
+          optimizacion: {
+            label: "Optimización",
+            baseInvestment: [2000, 4000],
+            baseWeeks: [4, 7],
+            baseImpact: [18, 30],
+            areas: ["Conversión y automatización", "Procesos digitales"],
+            tools: ["Automatizaciones web", "Integraciones"],
+            iaIncluded: false
+          },
+          innovacion: {
+            label: "Innovación",
+            baseInvestment: [3000, 6000],
+            baseWeeks: [5, 8],
+            baseImpact: [22, 36],
+            areas: ["Soluciones avanzadas", "Experiencias personalizadas"],
+            tools: ["Dashboards inteligentes", "Asistentes digitales"],
+            iaIncluded: true
+          }
+        },
+        objectives: {
+          "mas-clientes": {
+            investmentBoost: [150, 300],
+            weeksBoost: [0.3, 0.6],
+            impactBoost: [2, 4],
+            areas: ["Captación comercial"],
+            tools: ["SEO local"]
+          },
+          "mostrar-negocio": {
+            investmentBoost: [120, 250],
+            weeksBoost: [0.2, 0.5],
+            impactBoost: [1, 3],
+            areas: ["Branding y contenido"],
+            tools: ["Galerías y casos"]
+          },
+          "reservas-citas": {
+            investmentBoost: [200, 400],
+            weeksBoost: [0.4, 0.8],
+            impactBoost: [3, 6],
+            areas: ["Reservas y agenda"],
+            tools: ["Motor de reservas"]
+          },
+          "vender-productos": {
+            investmentBoost: [250, 500],
+            weeksBoost: [0.6, 1],
+            impactBoost: [4, 7],
+            areas: ["Ecommerce"],
+            tools: ["Catálogo online"]
+          },
+          "reducir-llamadas": {
+            investmentBoost: [180, 320],
+            weeksBoost: [0.3, 0.6],
+            impactBoost: [3, 5],
+            areas: ["Atención digital"],
+            tools: ["WhatsApp Business"]
+          },
+          "automatizar-repetitivas": {
+            investmentBoost: [280, 520],
+            weeksBoost: [0.6, 1.2],
+            impactBoost: [5, 9],
+            areas: ["Automatización de tareas"],
+            tools: ["Workflows"]
+          },
+          "ia-futuro": {
+            investmentBoost: [300, 600],
+            weeksBoost: [0.6, 1.2],
+            impactBoost: [4, 8],
+            areas: ["Capacidades con IA"],
+            tools: ["Asistente IA"]
           }
         }
       };
@@ -624,15 +626,15 @@
         )
           return;
 
-        const companyValue = document.querySelector('input[name="companyType"]:checked')?.value;
-        const ambitionValue = document.querySelector('input[name="ambition"]:checked')?.value;
-        const selectedPains = Array.from(painInputs)
+        const situationValue = document.querySelector('input[name="currentSituation"]:checked')?.value;
+        const investmentValue = document.querySelector('input[name="investmentLevel"]:checked')?.value;
+        const selectedObjectives = Array.from(objectiveInputs)
           .filter((input) => input.checked)
           .map((input) => input.value);
 
-        if (!companyValue || !ambitionValue) {
+        if (!situationValue || !investmentValue) {
           briefSummary.textContent =
-            "Selecciona tu tipo de empresa y nivel de ambición para calcular un estimado consultivo.";
+            "Selecciona tu situación actual y nivel de inversión para calcular un estimado consultivo.";
           briefInvestment.textContent = "-";
           briefTimeline.textContent = "-";
           briefImpact.textContent = "-";
@@ -646,45 +648,62 @@
           return;
         }
 
-        const companyData = briefModel.companyTypes[companyValue] || briefModel.companyTypes.otro;
-        const ambitionData = briefModel.ambitions[ambitionValue] || briefModel.ambitions.basic;
+        const situationData = briefModel.situations[situationValue] || briefModel.situations["no-web"];
+        const investmentData = briefModel.investmentLevels[investmentValue] || briefModel.investmentLevels["presencia-digital"];
+        const objectiveCount = selectedObjectives.length;
+        const iaActive = investmentData.iaIncluded || selectedObjectives.includes("ia-futuro");
 
-        let [investmentMin, investmentMax] = companyData.baseInvestment;
-        let [weeksMin, weeksMax] = companyData.baseWeeks;
-        let [impactMin, impactMax] = companyData.baseImpact;
-        let areas = [...companyData.areas];
-        let tools = [...companyData.tools];
+        let [investmentMin, investmentMax] = investmentData.baseInvestment;
+        let [weeksMin, weeksMax] = investmentData.baseWeeks;
+        let [impactMin, impactMax] = investmentData.baseImpact;
+        let areas = [...investmentData.areas, ...situationData.areas];
+        let tools = [...investmentData.tools, ...situationData.tools];
 
-        selectedPains.forEach((pain) => {
-          const painData = briefModel.pains[pain];
-          if (!painData) return;
-          investmentMin += painData.investmentBoost[0];
-          investmentMax += painData.investmentBoost[1];
-          weeksMin += painData.weeksBoost[0];
-          weeksMax += painData.weeksBoost[1];
-          impactMin += painData.impactBoost[0];
-          impactMax += painData.impactBoost[1];
-          areas = areas.concat(painData.areas);
-          tools = tools.concat(painData.tools);
+        investmentMin += situationData.investmentBoost[0];
+        investmentMax += situationData.investmentBoost[1];
+        weeksMin += situationData.weeksBoost[0];
+        weeksMax += situationData.weeksBoost[1];
+        impactMin += situationData.impactBoost[0];
+        impactMax += situationData.impactBoost[1];
+
+        selectedObjectives.forEach((objective) => {
+          const objectiveData = briefModel.objectives[objective];
+          if (!objectiveData) return;
+          investmentMin += objectiveData.investmentBoost[0];
+          investmentMax += objectiveData.investmentBoost[1];
+          weeksMin += objectiveData.weeksBoost[0];
+          weeksMax += objectiveData.weeksBoost[1];
+          impactMin += objectiveData.impactBoost[0];
+          impactMax += objectiveData.impactBoost[1];
+          areas = areas.concat(objectiveData.areas);
+          tools = tools.concat(objectiveData.tools);
         });
 
-        investmentMin = Math.round(investmentMin * ambitionData.investmentMultiplier);
-        investmentMax = Math.round(investmentMax * ambitionData.investmentMultiplier);
-        weeksMin = Math.round((weeksMin + ambitionData.weeksAdd[0]) * 10) / 10;
-        weeksMax = Math.round((weeksMax + ambitionData.weeksAdd[1]) * 10) / 10;
-        impactMin = Math.round(impactMin + ambitionData.impactAdd[0]);
-        impactMax = Math.round(impactMax + ambitionData.impactAdd[1]);
+        if (!iaActive) {
+          areas = areas.filter((item) => !item.toLowerCase().includes("ia"));
+          tools = tools.filter((item) => !item.toLowerCase().includes("ia"));
+        }
 
-        const painsWeight = Math.max(selectedPains.length, 1);
-        investmentMax += painsWeight * 120;
-        weeksMax = Math.round((weeksMax + painsWeight * 0.2) * 10) / 10;
-        impactMax = Math.min(impactMax + painsWeight * 2, 80);
+        if (objectiveCount <= 1 && ["presencia-digital", "crecimiento"].includes(investmentValue)) {
+          investmentMin = Math.round(investmentMin * 0.9);
+          investmentMax = Math.round(investmentMax * 0.9);
+          weeksMax = Math.round(weeksMax * 0.9 * 10) / 10;
+        }
+
+        if (investmentValue === "presencia-digital") {
+          investmentMin = Math.max(investmentMin, 700);
+        }
+
+        weeksMin = Math.round(weeksMin * 10) / 10;
+        weeksMax = Math.round(weeksMax * 10) / 10;
+        impactMin = Math.round(impactMin);
+        impactMax = Math.min(Math.round(impactMax), 80);
 
         const investmentText = `${formatCurrency(investmentMin)} y ${formatCurrency(investmentMax)}`;
         const timelineText = formatRange(weeksMin, weeksMax, " semanas");
         const impactText = formatRange(impactMin, impactMax, "%");
 
-        briefSummary.textContent = `Para un negocio como el tuyo, un proyecto de este nivel suele situarse entre ${investmentText}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y permite reducir carga manual hasta un ${impactMin}–${impactMax}%.`;
+        briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
         briefInvestment.textContent = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
         briefTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
         briefImpact.textContent = `${impactMin}% – ${impactMax}%`;
@@ -710,7 +729,7 @@
           .join("");
       };
 
-      [...companyInputs, ...ambitionInputs, ...painInputs].forEach((input) => {
+      [...situationInputs, ...investmentInputs, ...objectiveInputs].forEach((input) => {
         input.addEventListener("change", updateBriefResult);
       });
       updateBriefResult();
