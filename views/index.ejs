@@ -682,7 +682,8 @@
       const estimatorModel = {
         soloWeb: {
           label: "Solo web",
-          includes: ["Web corporativa", "Diseño responsive", "SEO básico", "Formulario de contacto"]
+          includes: ["Web corporativa", "Diseño responsive", "SEO básico", "Formulario de contacto"],
+          discount: [150, 300]
         },
         situations: {
           "no-web": {
@@ -978,6 +979,12 @@
 
         if (investmentValue === "presencia-digital") {
           investmentMin = Math.max(investmentMin, 700);
+        }
+
+        if (isSoloWeb) {
+          const [discountMin, discountMax] = estimatorModel.soloWeb.discount;
+          investmentMin = Math.max(0, investmentMin - discountMin);
+          investmentMax = Math.max(investmentMin, investmentMax - discountMax);
         }
 
         weeksMin = Math.round(weeksMin * 10) / 10;
