@@ -86,6 +86,53 @@
                 Ver proceso
               </a>
             </div>
+            <form
+              action="/diagnostico"
+              method="post"
+              class="mt-6 grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl"
+            >
+              <div class="grid gap-4 sm:grid-cols-3">
+                <label class="text-sm text-white/70">
+                  Nombre
+                  <input
+                    type="text"
+                    name="nombre"
+                    required
+                    class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3 text-sm text-white placeholder-white/40 focus:border-amarilloCorp focus:outline-none"
+                    placeholder="Tu nombre"
+                  />
+                </label>
+                <label class="text-sm text-white/70">
+                  Email
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3 text-sm text-white placeholder-white/40 focus:border-amarilloCorp focus:outline-none"
+                    placeholder="tu@email.com"
+                  />
+                </label>
+                <label class="text-sm text-white/70">
+                  Objetivo principal
+                  <input
+                    type="text"
+                    name="objetivo"
+                    required
+                    class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-3 text-sm text-white placeholder-white/40 focus:border-amarilloCorp focus:outline-none"
+                    placeholder="Aumentar ventas, automatizar, etc."
+                  />
+                </label>
+              </div>
+              <div>
+                <button
+                  type="submit"
+                  class="inline-flex items-center justify-center rounded-full bg-amarilloCorp px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:shadow-xl"
+                >
+                  Recibir diagnóstico
+                </button>
+                <p class="mt-2 text-xs text-white/60">Respuesta en menos de 24h</p>
+              </div>
+            </form>
           </div>
           <div class="flex-1 w-full">
             <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 shadow-2xl">
