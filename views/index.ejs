@@ -380,6 +380,28 @@
                     Selecciona tu situación, objetivos y nivel de inversión para mostrar el estimado.
                   </p>
                   <p id="briefRecommendation" class="mt-2 text-xs text-amarilloCorp/90"></p>
+                  <dl class="mt-4 grid gap-3 text-sm text-white/70">
+                    <div>
+                      <dt class="text-xs text-white/50">Rango estimado</dt>
+                      <dd id="briefRangeDetail" class="font-semibold text-white">-</dd>
+                    </div>
+                    <div>
+                      <dt class="text-xs text-white/50">Por qué ese rango</dt>
+                      <dd id="briefRangeReason">-</dd>
+                    </div>
+                    <div>
+                      <dt class="text-xs text-white/50">Qué se implementaría</dt>
+                      <dd id="briefDeliverablesSummary">-</dd>
+                    </div>
+                    <div>
+                      <dt class="text-xs text-white/50">Qué problemas resolvería</dt>
+                      <dd id="briefProblemsSummary">-</dd>
+                    </div>
+                    <div>
+                      <dt class="text-xs text-white/50">Tiempo estimado</dt>
+                      <dd id="briefTimelineDetail" class="font-semibold text-white">-</dd>
+                    </div>
+                  </dl>
                   <div class="mt-3 grid gap-2 text-sm text-white/70 sm:grid-cols-2">
                     <div>
                       <p class="text-xs text-white/50">Rango estimado</p>
@@ -633,6 +655,11 @@
       const briefIncludes = document.getElementById("briefIncludes");
       const briefProblems = document.getElementById("briefProblems");
       const briefExample = document.getElementById("briefExample");
+      const briefRangeDetail = document.getElementById("briefRangeDetail");
+      const briefRangeReason = document.getElementById("briefRangeReason");
+      const briefDeliverablesSummary = document.getElementById("briefDeliverablesSummary");
+      const briefProblemsSummary = document.getElementById("briefProblemsSummary");
+      const briefTimelineDetail = document.getElementById("briefTimelineDetail");
       const panelInvestment = document.getElementById("panelInvestment");
       const panelTimeline = document.getElementById("panelTimeline");
       const panelImpact = document.getElementById("panelImpact");
@@ -741,6 +768,7 @@
         },
         objectives: {
           "mas-clientes": {
+            label: "Más clientes",
             investmentBoost: [150, 300],
             weeksBoost: [0.3, 0.6],
             impactBoost: [2, 4],
@@ -748,6 +776,7 @@
             problems: ["Baja captación de clientes"]
           },
           "mostrar-negocio": {
+            label: "Mostrar negocio",
             investmentBoost: [120, 250],
             weeksBoost: [0.2, 0.5],
             impactBoost: [1, 3],
@@ -755,6 +784,7 @@
             problems: ["Poca visibilidad del negocio"]
           },
           "reservas-citas": {
+            label: "Reservas y citas",
             investmentBoost: [200, 400],
             weeksBoost: [0.4, 0.8],
             impactBoost: [3, 6],
@@ -762,6 +792,7 @@
             problems: ["Gestión manual de reservas"]
           },
           "vender-productos": {
+            label: "Vender productos",
             investmentBoost: [250, 500],
             weeksBoost: [0.6, 1],
             impactBoost: [4, 7],
@@ -769,6 +800,7 @@
             problems: ["Ventas digitales limitadas"]
           },
           "reducir-llamadas": {
+            label: "Reducir llamadas",
             investmentBoost: [180, 320],
             weeksBoost: [0.3, 0.6],
             impactBoost: [3, 5],
@@ -776,6 +808,7 @@
             problems: ["Exceso de llamadas repetitivas"]
           },
           "automatizar-repetitivas": {
+            label: "Automatizar tareas",
             investmentBoost: [280, 520],
             weeksBoost: [0.6, 1.2],
             impactBoost: [5, 9],
@@ -783,6 +816,7 @@
             problems: ["Tareas repetitivas que consumen tiempo"]
           },
           "ia-futuro": {
+            label: "Preparar IA",
             investmentBoost: [300, 600],
             weeksBoost: [0.6, 1.2],
             impactBoost: [4, 8],
@@ -805,6 +839,11 @@
           !briefIncludes ||
           !briefProblems ||
           !briefExample ||
+          !briefRangeDetail ||
+          !briefRangeReason ||
+          !briefDeliverablesSummary ||
+          !briefProblemsSummary ||
+          !briefTimelineDetail ||
           !panelInvestment ||
           !panelTimeline ||
           !panelImpact ||
@@ -859,6 +898,11 @@
           briefTools.innerHTML = "";
           briefIncludes.innerHTML = "";
           briefProblems.innerHTML = "";
+          briefRangeDetail.textContent = "-";
+          briefRangeReason.textContent = "-";
+          briefDeliverablesSummary.textContent = "-";
+          briefProblemsSummary.textContent = "-";
+          briefTimelineDetail.textContent = "-";
           panelInvestment.querySelector("p:last-child").textContent = "-";
           panelTimeline.querySelector("p:last-child").textContent = "-";
           panelImpact.querySelector("p:last-child").textContent = "-";
@@ -874,6 +918,9 @@
           estimatorModel.investmentLevels[investmentValue] || estimatorModel.investmentLevels["presencia-digital"];
         const isSoloWeb = Boolean(soloWebInput?.checked && investmentValue === "presencia-digital");
         const recommendations = [];
+        const objectiveLabels = selectedObjectives
+          .map((objective) => estimatorModel.objectives[objective]?.label)
+          .filter(Boolean);
 
         let [investmentMin, investmentMax] = investmentData.baseInvestment;
         let [weeksMin, weeksMax] = investmentData.baseWeeks;
@@ -963,11 +1010,24 @@
         const includesItems = uniqueList(includes).slice(0, 6);
         const toolsItems = uniqueList(tools).slice(0, 6);
         const problemsItems = uniqueList(problems).slice(0, 6);
+        const objectivesText = objectiveLabels.length ? ` y objetivos (${objectiveLabels.join(", ")})` : "";
+        const innovationText = innovationSelected ? " + Innovación/IA" : "";
+        const soloWebText = isSoloWeb ? " (Solo web)" : "";
+
         briefIncludes.innerHTML = includesItems.map((item) => `<li>${item}</li>`).join("");
         briefTools.innerHTML = toolsItems.map((item) => `<li>${item}</li>`).join("");
         briefProblems.innerHTML = problemsItems.length
           ? problemsItems.map((item) => `<li>${item}</li>`).join("")
           : "<li>Sin objetivos seleccionados aún.</li>";
+        briefRangeDetail.textContent = investmentText;
+        briefRangeReason.textContent = `Se calcula por tu situación (${situationData.label}), el nivel ${investmentData.label}${soloWebText}${innovationText}${objectivesText}.`;
+        briefDeliverablesSummary.textContent = includesItems.length
+          ? `Entregables clave: ${includesItems.slice(0, 4).join(", ")}.`
+          : "-";
+        briefProblemsSummary.textContent = problemsItems.length
+          ? `Resolvería: ${problemsItems.slice(0, 4).join(", ")}.`
+          : "Sin problemas definidos aún.";
+        briefTimelineDetail.textContent = `${weeksMin} – ${weeksMax} semanas`;
 
         panelInvestment.querySelector("p:last-child").textContent = investmentText;
         panelTimeline.querySelector("p:last-child").textContent = `${weeksMin}–${weeksMax} semanas`;
