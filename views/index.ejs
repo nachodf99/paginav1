@@ -196,9 +196,17 @@
               <div class="space-y-3 text-sm text-white/70">
                 <p class="text-xs text-white/60">Paso 1 · Situación actual</p>
                 <div class="grid gap-3 sm:grid-cols-2">
-                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
-                    <input type="radio" name="currentSituation" value="no-web" class="accent-amarilloCorp" />
-                    No tengo web
+                  <label class="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
+                    <span class="flex items-center gap-3">
+                      <input type="radio" name="currentSituation" value="no-web" class="accent-amarilloCorp" />
+                      No tengo web
+                    </span>
+                    <span
+                      id="suggestNoWeb"
+                      class="hidden rounded-full border border-amarilloCorp/40 bg-amarilloCorp/10 px-2 py-1 text-[10px] font-semibold text-amarilloCorp"
+                    >
+                      Sugerimos presencia digital
+                    </span>
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4 transition hover:border-amarilloCorp/60">
                     <input type="radio" name="currentSituation" value="web-mejora" class="accent-amarilloCorp" />
@@ -229,13 +237,29 @@
                     <input type="checkbox" value="reservas-citas" class="objective-input accent-amarilloCorp" />
                     Permitir reservas o citas
                   </label>
-                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="vender-productos" class="objective-input accent-amarilloCorp" />
-                    Vender productos
+                  <label class="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <span class="flex items-center gap-3">
+                      <input type="checkbox" value="vender-productos" class="objective-input accent-amarilloCorp" />
+                      Vender productos
+                    </span>
+                    <span
+                      id="suggestEcommerce"
+                      class="hidden rounded-full border border-amarilloCorp/40 bg-amarilloCorp/10 px-2 py-1 text-[10px] font-semibold text-amarilloCorp"
+                    >
+                      Sugerimos ecommerce
+                    </span>
                   </label>
-                  <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <input type="checkbox" value="reducir-llamadas" class="objective-input accent-amarilloCorp" />
-                    Reducir llamadas
+                  <label class="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
+                    <span class="flex items-center gap-3">
+                      <input type="checkbox" value="reducir-llamadas" class="objective-input accent-amarilloCorp" />
+                      Reducir llamadas
+                    </span>
+                    <span
+                      id="suggestCalls"
+                      class="hidden rounded-full border border-amarilloCorp/40 bg-amarilloCorp/10 px-2 py-1 text-[10px] font-semibold text-amarilloCorp"
+                    >
+                      Sugerimos reservas/automatización
+                    </span>
                   </label>
                   <label class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
                     <input type="checkbox" value="automatizar-repetitivas" class="objective-input accent-amarilloCorp" />
@@ -321,6 +345,7 @@
                   <p id="briefSummary" class="mt-2 text-sm text-white/70">
                     Selecciona tu situación, objetivos y nivel de inversión para mostrar el estimado.
                   </p>
+                  <p id="briefRecommendation" class="mt-2 text-xs text-amarilloCorp/90"></p>
                   <div class="mt-3 grid gap-2 text-sm text-white/70 sm:grid-cols-2">
                     <div>
                       <p class="text-xs text-white/50">Rango estimado</p>
@@ -565,6 +590,7 @@
       updateROI();
 
       const briefSummary = document.getElementById("briefSummary");
+      const briefRecommendation = document.getElementById("briefRecommendation");
       const briefInvestment = document.getElementById("briefInvestment");
       const briefTimeline = document.getElementById("briefTimeline");
       const briefImpact = document.getElementById("briefImpact");
@@ -583,6 +609,9 @@
       const objectiveInputs = document.querySelectorAll(".objective-input");
       const innovationToggle = document.getElementById("innovationToggle");
       const soloWebInput = document.getElementById("soloWebInput");
+      const suggestNoWeb = document.getElementById("suggestNoWeb");
+      const suggestEcommerce = document.getElementById("suggestEcommerce");
+      const suggestCalls = document.getElementById("suggestCalls");
 
       const estimatorModel = {
         soloWeb: {
@@ -732,11 +761,29 @@
           return;
 
         const situationValue = document.querySelector('input[name="currentSituation"]:checked')?.value;
-        const investmentValue = document.querySelector('input[name="investmentLevel"]:checked')?.value;
+        let investmentValue = document.querySelector('input[name="investmentLevel"]:checked')?.value;
         const innovationSelected = innovationToggle?.checked;
         const selectedObjectives = Array.from(objectiveInputs)
           .filter((input) => input.checked)
           .map((input) => input.value);
+
+        if (situationValue === "no-web") {
+          const presenceInput = document.querySelector('input[name="investmentLevel"][value="presencia-digital"]');
+          if (presenceInput && !presenceInput.checked) {
+            presenceInput.checked = true;
+            investmentValue = "presencia-digital";
+          }
+        }
+
+        if (suggestNoWeb) {
+          suggestNoWeb.classList.toggle("hidden", situationValue !== "no-web");
+        }
+        if (suggestEcommerce) {
+          suggestEcommerce.classList.toggle("hidden", !selectedObjectives.includes("vender-productos"));
+        }
+        if (suggestCalls) {
+          suggestCalls.classList.toggle("hidden", !selectedObjectives.includes("reducir-llamadas"));
+        }
 
         if (soloWebInput) {
           const soloWebEnabled = investmentValue === "presencia-digital";
@@ -749,6 +796,9 @@
         if (!situationValue || !investmentValue) {
           briefSummary.textContent =
             "Selecciona tu situación actual y nivel de inversión para calcular un estimado consultivo.";
+          if (briefRecommendation) {
+            briefRecommendation.textContent = "Selecciona opciones para ver la recomendación principal.";
+          }
           briefInvestment.textContent = "-";
           briefTimeline.textContent = "-";
           briefImpact.textContent = "-";
@@ -770,6 +820,7 @@
         const investmentData =
           estimatorModel.investmentLevels[investmentValue] || estimatorModel.investmentLevels["presencia-digital"];
         const isSoloWeb = Boolean(soloWebInput?.checked && investmentValue === "presencia-digital");
+        const recommendations = [];
 
         let [investmentMin, investmentMax] = investmentData.baseInvestment;
         let [weeksMin, weeksMax] = investmentData.baseWeeks;
@@ -799,8 +850,16 @@
           problems = problems.concat(objectiveData.problems);
         });
 
+        if (selectedObjectives.includes("vender-productos")) {
+          recommendations.push("Módulo ecommerce");
+        }
+        if (selectedObjectives.includes("reducir-llamadas")) {
+          recommendations.push("Reservas online o automatización de atención");
+        }
+
         if (situationValue === "no-web") {
           problems.unshift("Ausencia de presencia digital");
+          recommendations.push("Presencia digital como base");
         }
         if (situationValue === "web-mejora") {
           problems.unshift("Web desactualizada o poco efectiva");
@@ -837,6 +896,12 @@
         const investmentText = `${formatCurrency(investmentMin)} – ${formatCurrency(investmentMax)}`;
         const soloWebNote = isSoloWeb ? " en modo Solo web (sin automatización/IA)" : "";
         briefSummary.textContent = `Según tu situación y objetivos, el rango estimado se sitúa entre ${investmentText}${soloWebNote}. La implementación toma entre ${weeksMin} y ${weeksMax} semanas y puede generar mejoras del ${impactMin}–${impactMax}%.`;
+        if (briefRecommendation) {
+          const recommendationNote = recommendations.length ? ` Sugerencias: ${recommendations.join(", ")}.` : ".";
+          briefRecommendation.textContent = `Recomendación principal: ${investmentData.label}${
+            isSoloWeb ? " (Solo web)" : ""
+          }.${recommendationNote}`;
+        }
         briefInvestment.textContent = investmentText;
         briefTimeline.textContent = `${weeksMin} – ${weeksMax} semanas`;
         briefImpact.textContent = `${impactMin}–${impactMax}%`;
